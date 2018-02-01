@@ -1,0 +1,24 @@
+{
+  "eats": [
+    {
+      "_id": "1",
+      "category": "restaurants",
+      "servesBeer": true,
+      "name": "Shuck n Dive",
+      "neighborhood": "Victoria Park",
+      "address": "648 N Federal Hwy",
+      "phone": "954-525-9373",
+      "website": "http://www.shuck-n-dive.com"
+    },
+    {
+      "_id": "2",
+      "category": "supermarket",
+      "servesBeer": true,
+      "name": "The Fresh Market",
+      "neighborhood": "Victoria Park",
+      "address": "424 North Federal Highway, Fort Lauderdale, FL 33301",
+      "phone": "",
+      "website": "https://www.thefreshmarket.com/"
+    }
+  ]
+}
