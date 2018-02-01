@@ -1,0 +1,20 @@
+.header--wrap {
+  height: 72px;
+  background-image: url('../img/header.png');
+  text-align: center;
+}
+
+.header--title {
+  display: inline-block;
+  margin: 0 !important;
+  padding: 0;
+  line-height: 72px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.header--logo {
+  position: absolute;
+  left: 20px;
+}
