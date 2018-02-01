@@ -1,7 +1,7 @@
 {
   "eats": [
     {
-      "_id": "1",
+      "id": "1",
       "category": "restaurants",
       "servesBeer": true,
       "name": "Shuck n Dive",
@@ -11,7 +11,7 @@
       "website": "http://www.shuck-n-dive.com"
     },
     {
-      "_id": "2",
+      "id": "2",
       "category": "supermarket",
       "servesBeer": true,
       "name": "The Fresh Market",
