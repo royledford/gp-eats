@@ -2,15 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import Header from './Header'
+import Table from './Table'
 import './Main.css'
 
 export default class Main extends Component {
   static propTypes = {
-    onClick: PropTypes.func,
-    someProp: PropTypes.string,
-  }
-  static defaultProps = {
-    someProp: 'someValue',
+    eats: PropTypes.array.isRequired,
   }
 
   constructor(props) {
@@ -21,9 +18,13 @@ export default class Main extends Component {
   }
 
   render() {
+    const { eats } = this.props
     return (
-      <div className="body--wrap">
+      <div className="main--wrap">
         <Header />
+        <div className="main--content">
+          <Table eats={eats} />
+        </div>
       </div>
     )
   }

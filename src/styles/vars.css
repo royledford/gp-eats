@@ -16,8 +16,8 @@
   --accent-color: rgb(80, 119, 93);
   --accent-color-dark: rgb(34, 45, 35);
 
-  --color-black: #333;
-  --color-white: #fff;
+  --black: #333;
+  --white: #fff;
 
   --color-background: rgb(35, 31, 28);
 
@@ -61,7 +61,7 @@
   --font-style: normal;
   --font-variant: normal;
   --font-weight: normal;
-  --font-color: var(--color-black);
+  --font-color: var(--white);
   --line-height: 1.6;
 
   /* Headings */
