@@ -6,6 +6,7 @@ import DataService from '../../services/DataService'
 import settings from '../../config/settings'
 import config from '../../config/config'
 import gpLogo from '../../img/map-gplogo.png'
+import eatMarker from '../../img/map-eat1.png'
 
 export default class BaseMapContainer extends Component {
   static propTypes = {
@@ -30,15 +31,11 @@ export default class BaseMapContainer extends Component {
   componentDidMount() {
     // Get all the places
 
-    // DataService.getEats().then(data => {
-    //   let eats = data
-    // })
-
     var address = settings.homeAddress
     var zoomScale = settings.zoomScale
     Geocode.getGeocodeFromAddress(address)
       .then(location => {
-        const homeLocation = location.results[0].geometry.this.setState({
+        this.setState({
           homeGeocode: {
             lat: location.results[0].geometry.location.lat,
             lng: location.results[0].geometry.location.lng,
@@ -57,8 +54,19 @@ export default class BaseMapContainer extends Component {
       })
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   debugger
+  //   if (nextProps.eats.length > 0) {
+  //     this.setState({ eats: nextProps.eats })
+  //   }
+  // }
+
+  getEatsPlaces() {}
+
   render() {
     const { homeGeocode } = this.state
+    const { eats } = this.props
+    debugger
     const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
     return (
       <BaseMap
@@ -71,6 +79,8 @@ export default class BaseMapContainer extends Component {
         zoomLevel={settings.zoomLevel}
         markerPostion={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
         markerIcon={gpLogo}
+        eatLocations={eats}
+        eatMarker={eatMarker}
       />
     )
   }

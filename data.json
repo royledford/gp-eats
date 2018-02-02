@@ -23,6 +23,54 @@
       "website": "https://www.thefreshmarket.com/",
       "lat": 26.1271157,
       "lng": -80.1389107
+    },
+    {
+      "id": "3",
+      "category": "supermarket",
+      "servesBeer": true,
+      "name": "The Whole Enchilada",
+      "neighborhood": "Victoria Park",
+      "address": "424 North Federal Highway, Fort Lauderdale, FL 33301",
+      "phone": "",
+      "website": "https://www.thefreshmarket.com/",
+      "lat": 26.1271157,
+      "lng": -80.1389107
+    },
+    {
+      "id": "4",
+      "category": "supermarket",
+      "servesBeer": true,
+      "name": "Colada",
+      "neighborhood": "Victoria Park",
+      "address": "424 North Federal Highway, Fort Lauderdale, FL 33301",
+      "phone": "",
+      "website": "https://www.thefreshmarket.com/",
+      "lat": 26.1271157,
+      "lng": -80.1389107
+    },
+    {
+      "id": "5",
+      "category": "supermarket",
+      "servesBeer": true,
+      "name": "Neuves",
+      "neighborhood": "Victoria Park",
+      "address": "424 North Federal Highway, Fort Lauderdale, FL 33301",
+      "phone": "",
+      "website": "https://www.thefreshmarket.com/",
+      "lat": 26.1271157,
+      "lng": -80.1389107
+    },
+    {
+      "id": "6",
+      "category": "supermarket",
+      "servesBeer": true,
+      "name": "McDonalds",
+      "neighborhood": "Victoria Park",
+      "address": "424 North Federal Highway, Fort Lauderdale, FL 33301",
+      "phone": "",
+      "website": "https://www.thefreshmarket.com/",
+      "lat": 26.1271157,
+      "lng": -80.1389107
     }
   ]
 }

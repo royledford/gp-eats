@@ -25,7 +25,7 @@ export default class Main extends Component {
       <div className="main--wrap">
         <Header />
         <div className="main--content">
-          <BaseMapContainer />
+          <BaseMapContainer eats={eats} />
           <Table eats={eats} />
         </div>
       </div>

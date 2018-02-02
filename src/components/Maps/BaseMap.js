@@ -10,6 +10,10 @@ const BaseMap = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap defaultZoom={props.zoomLevel} defaultCenter={props.center} defaultOptions={{ styles: mapStyle }}>
       {props.isMarkerShown && <Marker defaultAnimation={2} position={props.markerPostion} icon={props.markerIcon} />}
+      {props.eatLocations.map(location => {
+        console.log(location)
+        return <Marker position={{ lat: location.lat, lng: location.lng }} icon={props.eatMarker} />
+      })}
     </GoogleMap>
   ))
 )
