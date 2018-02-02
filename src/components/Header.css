@@ -19,3 +19,18 @@
   position: absolute;
   left: 20px;
 }
+
+.header--add {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--accent-color-dark);
+  border-radius: 50%;
+}
+
+.header--add-icon {
+  font-size: 32px;
+  line-height: 40px;
+}
