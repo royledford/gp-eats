@@ -60,8 +60,8 @@ export default class BaseMapContainer extends Component {
   render() {
     const { homeGeocode } = this.state
     const { eats } = this.props
-    debugger
     const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
+
     return (
       <div className="basemap--map-wrap">
         <BaseMap
