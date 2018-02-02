@@ -10,7 +10,7 @@
       "phone": "954-525-9373",
       "website": "http://www.shuck-n-dive.com",
       "lat": 26.1303229,
-      "lgn": -80.1363227
+      "lng": -80.1363227
     },
     {
       "id": "2",
@@ -22,7 +22,7 @@
       "phone": "",
       "website": "https://www.thefreshmarket.com/",
       "lat": 26.1271157,
-      "lgn": -80.1389107
+      "lng": -80.1389107
     }
   ]
 }
