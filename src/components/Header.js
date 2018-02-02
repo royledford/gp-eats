@@ -7,7 +7,9 @@ export default class Header extends Component {
   render() {
     return (
       <header className="header--wrap">
-        <img src={logo} alt="GP Logo" className="header--logo" />
+        <a href="https://www.generalprovision.com/">
+          <img src={logo} alt="GP Logo" className="header--logo" />
+        </a>
         <h1 className="header--title">GP Local Eats</h1>
         <div className="header--add">
           <TiPlus className="header--add-icon" />

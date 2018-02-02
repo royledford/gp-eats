@@ -7,6 +7,7 @@ import settings from '../../config/settings'
 import config from '../../config/config'
 import gpLogo from '../../img/map-gplogo.png'
 import eatMarker from '../../img/map-eat1.png'
+import './BaseMapContainer.css'
 
 export default class BaseMapContainer extends Component {
   static propTypes = {
@@ -54,13 +55,6 @@ export default class BaseMapContainer extends Component {
       })
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   debugger
-  //   if (nextProps.eats.length > 0) {
-  //     this.setState({ eats: nextProps.eats })
-  //   }
-  // }
-
   getEatsPlaces() {}
 
   render() {
@@ -69,19 +63,21 @@ export default class BaseMapContainer extends Component {
     debugger
     const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
     return (
-      <BaseMap
-        isMarkerShown={true}
-        googleMapURL={`${config.googleMapApi}key=${key}&v=3.exp&libraries=geometry,drawing,places`}
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `400px` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-        center={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
-        zoomLevel={settings.zoomLevel}
-        markerPostion={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
-        markerIcon={gpLogo}
-        eatLocations={eats}
-        eatMarker={eatMarker}
-      />
+      <div className="basemap--map-wrap">
+        <BaseMap
+          isMarkerShown={true}
+          googleMapURL={`${config.googleMapApi}key=${key}&v=3.exp&libraries=geometry,drawing,places`}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `300px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          center={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
+          zoomLevel={settings.zoomLevel}
+          markerPostion={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
+          markerIcon={gpLogo}
+          eatLocations={eats}
+          eatMarker={eatMarker}
+        />
+      </div>
     )
   }
 }
