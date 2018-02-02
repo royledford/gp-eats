@@ -8,7 +8,9 @@
       "neighborhood": "Victoria Park",
       "address": "648 N Federal Hwy",
       "phone": "954-525-9373",
-      "website": "http://www.shuck-n-dive.com"
+      "website": "http://www.shuck-n-dive.com",
+      "lat": 26.1303229,
+      "lgn": -80.1363227
     },
     {
       "id": "2",
@@ -18,7 +20,9 @@
       "neighborhood": "Victoria Park",
       "address": "424 North Federal Highway, Fort Lauderdale, FL 33301",
       "phone": "",
-      "website": "https://www.thefreshmarket.com/"
+      "website": "https://www.thefreshmarket.com/",
+      "lat": 26.1271157,
+      "lgn": -80.1389107
     }
   ]
 }
