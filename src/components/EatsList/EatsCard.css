@@ -3,6 +3,10 @@
   border: 1px solid var(--brandcolor);
 }
 
+.eatscard--card-active {
+  background-color: var(--accent-color);
+}
+
 .eatscard--icon-small {
   font-size: 28px;
   color: var(--white);
@@ -51,17 +55,17 @@
 }
 .eatscard--link:link {
   color: var(--brandcolor);
-  background-color: var(--accent-color-dark);
+  background-color: inherit;
 }
 .eatscard--link:visited {
   color: var(--brandcolor);
-  background-color: var(--accent-color-dark);
+  background-color: inherit;
 }
 .eatscard--link:hover {
   color: white;
-  background-color: var(--accent-color-dark);
+  background-color: inherit;
 }
 .eatscard--link:active {
   color: var(--brandcolor);
-  background-color: var(--accent-color-dark);
+  background-color: inherit;
 }

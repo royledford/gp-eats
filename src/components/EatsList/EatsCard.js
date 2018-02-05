@@ -20,23 +20,32 @@ export default class EatsCard extends Component {
       phone: PropTypes.string,
       website: PropTypes.string,
     }),
+    onClick: PropTypes.func.isRequired,
+    active: PropTypes.bool,
+  }
+
+  defaultProps = {
+    active: false,
   }
 
   constructor(props) {
     super(props)
-    this.state = {
-      someState: true,
-    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(event) {
+    this.props.onClick(this.props.eatsData.id)
   }
 
   render() {
-    const { eatsData } = this.props
+    const { eatsData, onClick } = this.props
     const beerIcon = eatsData.servesBeer ? <TiBeer /> : null
     const address = getShortAddress(eatsData.address)
     const eatType = eatsData.category === 'restaurant' ? <KnifeForkIcon /> : <MarketIcon />
+    const activeClass = this.props.active ? 'eatscard--card-active' : ''
 
     return (
-      <div className="eatscard">
+      <div className={`eatscard ${activeClass}`} onClick={this.handleClick}>
         <h1 className="eatscard--name">{eatsData.name}</h1>
         <div className="eatscard--info">
           <p className="eatscard--address">{address}</p>
