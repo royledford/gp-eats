@@ -2,7 +2,7 @@
   "eats": [
     {
       "id": "1",
-      "category": "restaurants",
+      "category": "restaurant",
       "servesBeer": true,
       "name": "Shuck n Dive",
       "neighborhood": "Victoria Park",
@@ -14,7 +14,7 @@
     },
     {
       "id": "2",
-      "category": "supermarket",
+      "category": "market",
       "servesBeer": true,
       "name": "The Fresh Market",
       "neighborhood": "Victoria Park",
@@ -26,7 +26,7 @@
     },
     {
       "id": "3",
-      "category": "supermarket",
+      "category": "market",
       "servesBeer": true,
       "name": "The Whole Enchilada",
       "neighborhood": "Victoria Park",
@@ -38,7 +38,7 @@
     },
     {
       "id": "4",
-      "category": "supermarket",
+      "category": "market",
       "servesBeer": true,
       "name": "Colada",
       "neighborhood": "Victoria Park",
@@ -50,7 +50,7 @@
     },
     {
       "id": "5",
-      "category": "supermarket",
+      "category": "market",
       "servesBeer": true,
       "name": "Neuves",
       "neighborhood": "Victoria Park",
@@ -62,7 +62,7 @@
     },
     {
       "id": "6",
-      "category": "supermarket",
+      "category": "market",
       "servesBeer": true,
       "name": "McDonalds",
       "neighborhood": "Victoria Park",
