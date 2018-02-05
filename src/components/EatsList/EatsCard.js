@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Card from '../common/Card'
 import { getShortAddress } from '../../helpers/helpers'
 import TiBeer from 'react-icons/lib/ti/beer'
 import GoLinkExternal from 'react-icons/lib/go/link-external'
@@ -38,14 +39,13 @@ export default class EatsCard extends Component {
   }
 
   render() {
-    const { eatsData } = this.props
+    const { eatsData, active } = this.props
     const beerIcon = eatsData.servesBeer ? <TiBeer /> : null
     const address = getShortAddress(eatsData.address)
     const eatType = eatsData.category === 'restaurant' ? <KnifeForkIcon /> : <MarketIcon />
-    const activeClass = this.props.active ? 'eatscard--card-active' : ''
-
+    // const activeClass = this.props.active ? 'eatscard--card-active' : ''
     return (
-      <div className={`eatscard ${activeClass}`} onClick={this.handleClick}>
+      <Card onClick={this.handleClick} active={active}>
         <h1 className="eatscard--name">{eatsData.name}</h1>
         <div className="eatscard--info">
           <p className="eatscard--address">{address}</p>
@@ -59,7 +59,7 @@ export default class EatsCard extends Component {
             <GoLinkExternal />
           </a>
         </div>
-      </div>
+      </Card>
     )
   }
 }

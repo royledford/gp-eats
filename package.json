@@ -4,13 +4,15 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
+    "lodash": "^4.17.5",
     "parse-address": "^0.0.10",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-google-maps": "^9.4.5",
     "react-icons": "^2.2.7",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.0"
+    "react-scripts": "1.1.0",
+    "recompose": "^0.26.0"
   },
   "scripts": {
     "start": "react-scripts start",

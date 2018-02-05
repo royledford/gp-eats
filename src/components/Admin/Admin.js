@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import AdminMapContainer from '../Maps/AdminMapContainer'
+import AdminMap from '../Maps/AdminMap'
+// import AdminMapContainer from '../Maps/AdminMapContainer'
 
 import './Admin.css'
 
@@ -24,7 +25,7 @@ export default class Admin extends Component {
   render() {
     return (
       <div className="admin--content">
-        <AdminMapContainer />
+        <AdminMap />
       </div>
     )
   }
