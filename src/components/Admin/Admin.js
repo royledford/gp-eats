@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import CardLogin from '../common/CardLogin'
 import EatsList from '../EatsList/EatsList'
 import './Admin.css'
 
@@ -20,8 +21,13 @@ export default class Admin extends Component {
     const { eats } = this.props
 
     return (
-      <div className="admin--content">
-        <EatsList eats={eats} />
+      <div className="admin--wrap">
+        <div className="admin--header">
+          <CardLogin />
+        </div>
+        <div className="admin--content">
+          <EatsList eats={eats} />
+        </div>
       </div>
     )
   }

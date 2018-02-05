@@ -1,0 +1,33 @@
+.cardlogin--wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.cardlogin--name {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.cardlogin--add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent-color-dark);
+
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+.cardlogin--add:hover {
+  background-color: var(--color-light);
+}
+
+.cardlogin--add-icon {
+  font-size: 32px;
+  line-height: 40px;
+}
