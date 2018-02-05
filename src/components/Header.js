@@ -11,9 +11,9 @@ export default class Header extends Component {
           <img src={logo} alt="GP Logo" className="header--logo" />
         </a>
         <h1 className="header--title">GP Local Eats</h1>
-        <div className="header--add">
+        {/* <div className="header--add">
           <TiPlus className="header--add-icon" />
-        </div>
+        </div> */}
       </header>
     )
   }

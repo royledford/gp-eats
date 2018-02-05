@@ -55,8 +55,6 @@ export default class BaseMapContainer extends Component {
       })
   }
 
-  getEatsPlaces() {}
-
   render() {
     const { homeGeocode } = this.state
     const { eats } = this.props
