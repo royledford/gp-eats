@@ -26,7 +26,7 @@
     },
     {
       "id": "3",
-      "category": "market",
+      "category": "restaurant",
       "servesBeer": true,
       "name": "The Whole Enchilada",
       "neighborhood": "Victoria Park",
@@ -38,7 +38,7 @@
     },
     {
       "id": "4",
-      "category": "market",
+      "category": "restaurant",
       "servesBeer": true,
       "name": "Colada",
       "neighborhood": "Victoria Park",
@@ -50,7 +50,7 @@
     },
     {
       "id": "5",
-      "category": "market",
+      "category": "restaurant",
       "servesBeer": true,
       "name": "Neuves",
       "neighborhood": "Victoria Park",
@@ -62,8 +62,8 @@
     },
     {
       "id": "6",
-      "category": "market",
-      "servesBeer": true,
+      "category": "restaurant",
+      "servesBeer": false,
       "name": "McDonalds",
       "neighborhood": "Victoria Park",
       "address": "424 North Federal Highway, Fort Lauderdale, FL 33301",

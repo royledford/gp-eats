@@ -33,6 +33,7 @@ export default class EatsCard extends Component {
     const { eatsData } = this.props
     const beerIcon = eatsData.servesBeer ? <TiBeer /> : null
     const address = getShortAddress(eatsData.address)
+    const eatType = eatsData.category === 'restaurant' ? <KnifeForkIcon /> : <MarketIcon />
 
     return (
       <div className="eatscard">
@@ -44,8 +45,7 @@ export default class EatsCard extends Component {
         </div>
         <div className="eatscard--footer">
           {beerIcon}
-          <KnifeForkIcon />
-          <MarketIcon />
+          {eatType}
           <a href={eatsData.website} className="eatscard--link" target="_blank" rel="noopener noreferrer">
             <GoLinkExternal />
           </a>
