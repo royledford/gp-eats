@@ -6,7 +6,7 @@ import './EatsList.css'
 export default class EatsList extends Component {
   static propTypes = {
     eats: PropTypes.array.isRequired,
-    cardClicked: PropTypes.func.isRequired,
+    // cardClicked: PropTypes.func.isRequired,
   }
 
   constructor(props) {

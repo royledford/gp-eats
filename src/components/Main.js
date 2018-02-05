@@ -23,11 +23,15 @@ export default class Main extends Component {
     const { eats } = this.props
 
     return (
-      <div className="main--wrap">
+      <div className="main--wrap-outer">
         <Header />
         <div className="main--content">
-          <BaseMapContainer eats={eats} />
-          <EatsList eats={eats} />
+          <div className="main--map">
+            <BaseMapContainer eats={eats} />
+          </div>
+          <div className="main--list">
+            <EatsList eats={eats} />
+          </div>
         </div>
       </div>
     )

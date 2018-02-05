@@ -7,7 +7,6 @@ import settings from '../../config/settings'
 import config from '../../config/config'
 import gpLogo from '../../img/map-gplogo.png'
 import eatMarker from '../../img/map-eat.png'
-import './BaseMapContainer.css'
 
 export default class BaseMapContainer extends Component {
   static propTypes = {
@@ -59,7 +58,7 @@ export default class BaseMapContainer extends Component {
     const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
 
     return (
-      <div className="basemap--map-wrap">
+      <div>
         <BaseMap
           isMarkerShown={true}
           googleMapURL={`${config.googleMapApi}key=${key}&v=3.exp&libraries=geometry,drawing,places`}

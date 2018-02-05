@@ -25,7 +25,7 @@ export default class EatsCard extends Component {
     active: PropTypes.bool,
   }
 
-  defaultProps = {
+  static defaultProps = {
     active: false,
   }
 

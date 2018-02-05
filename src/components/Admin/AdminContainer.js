@@ -3,28 +3,30 @@ import PropTypes from 'prop-types'
 
 import Header from '../Header'
 import Admin from './Admin'
+import DataService from '../../services/DataService'
 
 export default class AdminContainer extends Component {
-  static propTypes = {
-    onClick: PropTypes.func,
-    someProp: PropTypes.string,
-  }
-  static defaultProps = {
-    someProp: 'someValue',
-  }
-
   constructor(props) {
     super(props)
     this.state = {
-      someState: true,
+      eats: [],
     }
+  }
+
+  componentWillMount() {
+    DataService.getEats().then(eats => {
+      const result = atob(eats.content)
+      const parsedResult = JSON.parse(result)
+      const formattedEats = parsedResult.eats
+      this.setState({ eats: formattedEats })
+    })
   }
 
   render() {
     return (
       <div>
         <Header />
-        <Admin />
+        <Admin eats={this.state.eats} />
       </div>
     )
   }

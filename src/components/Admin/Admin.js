@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import AdminMap from '../Maps/AdminMap'
-// import AdminMapContainer from '../Maps/AdminMapContainer'
-
+import EatsList from '../EatsList/EatsList'
 import './Admin.css'
 
 export default class Admin extends Component {
   static propTypes = {
-    onClick: PropTypes.func,
-    someProp: PropTypes.string,
-  }
-  static defaultProps = {
-    someProp: 'someValue',
+    eats: PropTypes.array.isRequired,
   }
 
   constructor(props) {
@@ -23,9 +17,11 @@ export default class Admin extends Component {
   }
 
   render() {
+    const { eats } = this.props
+
     return (
       <div className="admin--content">
-        <AdminMap />
+        <EatsList eats={eats} />
       </div>
     )
   }
