@@ -1,0 +1,67 @@
+.eatscard {
+  padding: 6px 10px;
+  border: 1px solid var(--brandcolor);
+}
+
+.eatscard--icon-small {
+  font-size: 28px;
+  color: var(--white);
+}
+
+.eatscard--name {
+  margin: 6px 0 0 0;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.eatscard--info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.eatscard--address {
+  margin: 0;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.eatscard--phone {
+  margin: 0;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.eatscard--footer {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  height: 20px;
+  line-height: 20px;
+}
+.eatscard--link {
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+}
+.eatscard--link:link {
+  color: var(--brandcolor);
+  background-color: var(--accent-color-dark);
+}
+.eatscard--link:visited {
+  color: var(--brandcolor);
+  background-color: var(--accent-color-dark);
+}
+.eatscard--link:hover {
+  color: white;
+  background-color: var(--accent-color-dark);
+}
+.eatscard--link:active {
+  color: var(--brandcolor);
+  background-color: var(--accent-color-dark);
+}

@@ -4534,6 +4534,12 @@ param-case@2.1.x:
   dependencies:
     no-case "^2.2.0"
 
+parse-address@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/parse-address/-/parse-address-0.0.10.tgz#71c46948dcbca484c587e61cdf10f5816efe1ea2"
+  dependencies:
+    xregexp "^3.1.1"
+
 parse-asn1@^5.0.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/parse-asn1/-/parse-asn1-5.1.0.tgz#37c4f9b7ed3ab65c74817b5f2480937fbf97c712"
@@ -6631,6 +6637,10 @@ xml-char-classes@^1.0.0:
 xml-name-validator@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-2.0.1.tgz#4d8b8f1eccd3419aa362061becef515e1e559635"
+
+xregexp@^3.1.1:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-3.2.0.tgz#cb3601987bfe2695b584000c18f1c4a8c322878e"
 
 xtend@^4.0.0, xtend@^4.0.1:
   version "4.0.1"

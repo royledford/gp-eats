@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import BaseMapContainer from './Maps/BaseMapContainer'
 import Header from './Header'
-import Table from './Table'
+import EatsList from './EatsList/EatsList'
 import './Main.css'
 
 export default class Main extends Component {
@@ -26,7 +26,7 @@ export default class Main extends Component {
         <Header />
         <div className="main--content">
           <BaseMapContainer eats={eats} />
-          <Table eats={eats} />
+          <EatsList eats={eats} />
         </div>
       </div>
     )
