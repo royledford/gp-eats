@@ -21,7 +21,7 @@ export default class EatsList extends Component {
   }
 
   render() {
-    const { eats, cardClicked } = this.props
+    const { eats } = this.props
     const { activeCard } = this.state
 
     let eatsCards = null

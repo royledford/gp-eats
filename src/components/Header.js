@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import logo from '../img/logo.png'
-import TiPlus from 'react-icons/lib/ti/plus'
+// import TiPlus from 'react-icons/lib/ti/plus'
 import './Header.css'
 
 export default class Header extends Component {

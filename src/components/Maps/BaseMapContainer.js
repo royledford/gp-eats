@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import BaseMap from './BaseMap'
 import Geocode from '../../services/Geocode'
-import DataService from '../../services/DataService'
+// import DataService from '../../services/DataService'
 import settings from '../../config/settings'
 import config from '../../config/config'
 import gpLogo from '../../img/map-gplogo.png'
-import eatMarker from '../../img/map-eat1.png'
+import eatMarker from '../../img/map-eat.png'
 import './BaseMapContainer.css'
 
 export default class BaseMapContainer extends Component {
@@ -31,9 +31,7 @@ export default class BaseMapContainer extends Component {
 
   componentDidMount() {
     // Get all the places
-
     var address = settings.homeAddress
-    var zoomScale = settings.zoomScale
     Geocode.getGeocodeFromAddress(address)
       .then(location => {
         this.setState({

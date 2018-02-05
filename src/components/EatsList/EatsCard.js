@@ -38,7 +38,7 @@ export default class EatsCard extends Component {
   }
 
   render() {
-    const { eatsData, onClick } = this.props
+    const { eatsData } = this.props
     const beerIcon = eatsData.servesBeer ? <TiBeer /> : null
     const address = getShortAddress(eatsData.address)
     const eatType = eatsData.category === 'restaurant' ? <KnifeForkIcon /> : <MarketIcon />

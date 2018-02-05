@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 import mapStyle from '../../styles/mapStyle.json'
-
-// process.env.REACT_APP_STRIPE_KEY
 
 const BaseMap = withScriptjs(
   withGoogleMap(props => (
