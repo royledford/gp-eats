@@ -3,6 +3,8 @@
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  padding: 6px 10px;
+  background-color: var(--accent-color-dark);
 }
 
 .cardlogin--name {
@@ -30,4 +32,28 @@
 .cardlogin--add-icon {
   font-size: 32px;
   line-height: 40px;
+}
+
+.cardlogin--link {
+  background-color: inherit;
+}
+
+.cardlogin--link:link {
+  color: var(--brandcolor);
+  background-color: inherit;
+}
+
+.cardlogin--link:visited {
+  color: var(--brandcolor);
+  background-color: inherit;
+}
+
+.cardlogin--link:hover {
+  color: white;
+  background-color: inherit;
+}
+
+.cardlogin--link:active {
+  color: var(--brandcolor);
+  background-color: inherit;
 }

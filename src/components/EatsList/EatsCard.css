@@ -1,10 +1,5 @@
-.eatscard {
+.eatscard-wrap {
   padding: 6px 10px;
-  border: 1px solid var(--brandcolor);
-}
-
-.eatscard--card-active {
-  background-color: var(--accent-color);
 }
 
 .eatscard--icon-small {
@@ -48,24 +43,29 @@
   height: 20px;
   line-height: 20px;
 }
+
 .eatscard--link {
   margin: 0;
   padding: 0;
   margin-left: auto;
   background-color: inherit;
 }
+
 .eatscard--link:link {
   color: var(--brandcolor);
   background-color: inherit;
 }
+
 .eatscard--link:visited {
   color: var(--brandcolor);
   background-color: inherit;
 }
+
 .eatscard--link:hover {
   color: white;
   background-color: inherit;
 }
+
 .eatscard--link:active {
   color: var(--brandcolor);
   background-color: inherit;

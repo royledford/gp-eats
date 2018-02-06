@@ -42,22 +42,29 @@ export default class EatsCard extends Component {
     const { eatsData, active } = this.props
     const beerIcon = eatsData.servesBeer ? <TiBeer /> : null
     const address = getShortAddress(eatsData.address)
-    const eatType = eatsData.category === 'restaurant' ? <KnifeForkIcon /> : <MarketIcon />
+    const eatType =
+      eatsData.category === 'restaurant' ? <KnifeForkIcon /> : <MarketIcon />
     // const activeClass = this.props.active ? 'eatscard--card-active' : ''
     return (
       <Card onClick={this.handleClick} active={active}>
-        <h1 className="eatscard--name">{eatsData.name}</h1>
-        <div className="eatscard--info">
-          <p className="eatscard--address">{address}</p>
-          {/* <p className="eatscard--hood">{eatsData.neighborhood}</p> */}
-          <p className="eatscard--phone">{eatsData.phone}</p>
-        </div>
-        <div className="eatscard--footer">
-          {beerIcon}
-          {eatType}
-          <a href={eatsData.website} className="eatscard--link" target="_blank" rel="noopener noreferrer">
-            <GoLinkExternal />
-          </a>
+        <div className="eatscard-wrap">
+          <h1 className="eatscard--name">{eatsData.name}</h1>
+          <div className="eatscard--info">
+            <p className="eatscard--address">{address}</p>
+            {/* <p className="eatscard--hood">{eatsData.neighborhood}</p> */}
+            <p className="eatscard--phone">{eatsData.phone}</p>
+          </div>
+          <div className="eatscard--footer">
+            {beerIcon}
+            {eatType}
+            <a
+              href={eatsData.website}
+              className="eatscard--link"
+              target="_blank"
+              rel="noopener noreferrer">
+              <GoLinkExternal />
+            </a>
+          </div>
         </div>
       </Card>
     )

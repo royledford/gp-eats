@@ -7,7 +7,6 @@ export default class Card extends Component {
     onClick: PropTypes.func,
     active: PropTypes.bool,
   }
-
   static defaultProps = {
     onClick: () => {},
     active: false,
