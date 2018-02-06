@@ -20,7 +20,7 @@
 
   --color-background: rgb(35, 31, 28);
 
-  --highlight: #ffeea8;
+  --highlight: rgb(240, 216, 100);
   --error: #d33c40;
 
   --stdshadow: 3px 3px 5px #a0a0a0;
@@ -94,7 +94,7 @@
   /* Links */
   --link-fg: var(--brandcolor);
   --link-bg: var(--color-background);
-  --link-hover: var(--color-darker);
+  --link-hover: var(--white);
 
   /* --------------------- */
   /* Borders */
@@ -126,7 +126,7 @@
   /* --------------------- */
   /* Forms / Inputs */
   /* --------------------- */
-  --input-background: transparent;
+  --input-background: var(--white);
   --placeholder: var(--color-dark);
   --form-border: 1px solid #cdcdcd;
   --form-border-hover: 1px solid #b9b9b9;

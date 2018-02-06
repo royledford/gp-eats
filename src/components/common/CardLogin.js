@@ -7,27 +7,21 @@ import './CardLogin.css'
 
 export default class CardLogin extends Component {
   static propTypes = {
-    onClick: PropTypes.func,
-    someProp: PropTypes.string,
+    onAddNew: PropTypes.func.isRequired,
   }
   static defaultProps = {
-    someProp: 'someValue',
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      someState: true,
-    }
+    onAddNew: () => {},
   }
 
   render() {
+    const { onAddNew } = this.props
+
     return (
       <Card>
         <div className="cardlogin--wrap">
           <h4 className="cardlogin--name">Hi Jack!</h4>
           <div className="cardlogin--add">
-            <TiPlus className="cardlogin--add-icon" />
+            <TiPlus className="cardlogin--add-icon" onClick={onAddNew} />
           </div>
           <a href="" className="cardlogin--link">
             Logout

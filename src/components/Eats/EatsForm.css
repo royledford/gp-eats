@@ -1,0 +1,113 @@
+.eatsform--wrap {
+  padding: 70px 8px 0 8px;
+  height: 100%;
+  background-color: var(--accent-color-dark);
+}
+
+.eatsform--input-wrap {
+  font-family: var(--font-stack);
+}
+
+.eatsform--label {
+  display: inline-block;
+  margin-left: 4px;
+  margin-bottom: 4px;
+  margin-top: 8px;
+}
+
+.eatsform--input--error {
+  margin-left: 6px;
+  color: var(--highlight);
+}
+.eatsform--input--error:before {
+  content: '*** ';
+}
+
+.eatsform--checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  /* font-size: 22px; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.eatsform--controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.eatsform--button {
+  margin: 0;
+}
+
+.eatsform--button-link {
+  margin-right: 40px;
+  background-color: transparent;
+}
+
+/* Hide the browser's default checkbox */
+.eatsform--checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.eatsform--checkbox-label {
+  margin: 0;
+}
+
+/* Create a custom checkbox */
+.eatsform--checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.eatsform--checkbox-container:hover input ~ .eatsform--checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.eatsform--checkbox-container input:checked ~ .eatsform--checkmark {
+  background-color: var(--brandcolor);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.eatsform--checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.eatsform--checkbox-container input:checked ~ .eatsform--checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.eatsform--checkbox-container .eatsform--checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.eatsform--select {
+  background-color: var(--color-dark);
+}
