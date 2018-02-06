@@ -52,6 +52,7 @@
   margin: 0;
   padding: 0;
   margin-left: auto;
+  background-color: inherit;
 }
 .eatscard--link:link {
   color: var(--brandcolor);

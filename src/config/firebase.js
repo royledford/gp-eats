@@ -8,5 +8,6 @@ const config = {
   storageBucket: 'gp-eats-1517591141865.appspot.com',
   messagingSenderId: '763228141139',
 }
+
 firebase.initializeApp(config)
 export default firebase

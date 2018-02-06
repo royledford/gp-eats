@@ -5,11 +5,11 @@
   /* Color */
   /* --------------------- */
   --brandcolor: rgb(145, 131, 61);
-  --color-light: rgb(145, 131, 61);
+  --color-light: rgb(202, 192, 142);
   --color-medium: #7873d6;
-  --color-base: #2f27da;
-  --color-dark: #231f1c;
-  --color-darker: #0f0d41;
+  --color-base: rgb(107, 94, 27);
+  --color-dark: rgb(59, 87, 69);
+  --color-darker: rgb(39, 58, 45);
   --primary-color: var(--brandcolor);
   --secondary-color: var(--color-light);
   --accent-color: rgb(80, 119, 93);

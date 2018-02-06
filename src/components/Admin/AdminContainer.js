@@ -15,10 +15,10 @@ export default class AdminContainer extends Component {
 
   componentWillMount() {
     DataService.getEats().then(eats => {
-      const result = atob(eats.content)
-      const parsedResult = JSON.parse(result)
-      const formattedEats = parsedResult.eats
-      this.setState({ eats: formattedEats })
+      // const result = atob(eats.content)
+      // const parsedResult = JSON.parse(eats)
+      // const formattedEats = parsedResult.eats
+      this.setState({ eats: eats })
     })
   }
 
