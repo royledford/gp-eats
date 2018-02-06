@@ -32,6 +32,7 @@ const DataService = {
               lng: eats[eat].lng,
               phone: eats[eat].phone,
               website: eats[eat].website,
+              servesBeer: eats[eat].servesBeer,
             })
           }
           resolve(newState)
