@@ -9,6 +9,7 @@ import './Main.css'
 export default class Main extends Component {
   static propTypes = {
     eats: PropTypes.array.isRequired,
+    onCardClicked: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -19,17 +20,17 @@ export default class Main extends Component {
   }
 
   render() {
-    const { eats } = this.props
+    const { eats, onCardClicked, mapTooltip } = this.props
 
     return (
       <div className="main--wrap-outer">
         <Header />
         <div className="main--content">
           <div className="main--map">
-            <BaseMapContainer eats={eats} />
+            <BaseMapContainer eats={eats} tooltip={mapTooltip} />
           </div>
           <div className="main--list">
-            <EatsList eats={eats} />
+            <EatsList eats={eats} cardClicked={onCardClicked} />
           </div>
         </div>
       </div>

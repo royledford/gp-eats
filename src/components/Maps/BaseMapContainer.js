@@ -11,11 +11,8 @@ import eatMarker from '../../img/map-eat.png'
 
 export default class BaseMapContainer extends Component {
   static propTypes = {
-    onClick: PropTypes.func,
-    someProp: PropTypes.string,
-  }
-  static defaultProps = {
-    someProp: 'someValue',
+    eats: PropTypes.array.isRequired,
+    tooltip: PropTypes.any,
   }
 
   constructor(props) {
@@ -55,7 +52,7 @@ export default class BaseMapContainer extends Component {
 
   render() {
     const { homeGeocode } = this.state
-    const { eats } = this.props
+    const { eats, tooltip } = this.props
     const key =
       process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
 
@@ -67,6 +64,7 @@ export default class BaseMapContainer extends Component {
           markerIcon={gpLogo}
           eatLocations={eats}
           eatMarker={eatMarker}
+          tooltip={tooltip}
         />
       </div>
     )
