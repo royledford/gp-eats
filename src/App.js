@@ -11,14 +11,16 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
         <Router basename={process.env.PUBLIC_URL}>
-          <Switch>
-            <Route exact path="/" component={MainContainer} />
-            <Route exact path="/eats" component={AdminContainer} />
-            <Route exact path="/eats/new" component={EatsForm} />
-            <Route exact path="/eats/:id" component={EatsForm} />
-          </Switch>
+          <div>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={MainContainer} />
+              <Route exact path="/eats" component={AdminContainer} />
+              <Route exact path="/eats/new" component={EatsForm} />
+              <Route exact path="/eats/:id" component={EatsForm} />
+            </Switch>
+          </div>
         </Router>
       </React.Fragment>
     )

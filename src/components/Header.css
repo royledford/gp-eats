@@ -17,6 +17,11 @@
   text-transform: uppercase;
   font-weight: 400;
   color: var(--accent-color);
+  background-color: transparent;
+}
+
+.header--title:hover {
+  color: var(--accent-color);
 }
 
 .header--logo {
