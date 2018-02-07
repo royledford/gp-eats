@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import BaseMapContainer from './Maps/BaseMapContainer'
 import Header from './Header'
-// import EatsListContainer from './EatsList/EatsListContainer'
 import EatsList from './EatsList/EatsList'
 import './Main.css'
 

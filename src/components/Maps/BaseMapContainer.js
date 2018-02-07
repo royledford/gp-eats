@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+// import BaseMap from './BaseMap'
 import BaseMap from './BaseMap'
 import Geocode from '../../services/Geocode'
 // import DataService from '../../services/DataService'
@@ -55,17 +56,12 @@ export default class BaseMapContainer extends Component {
   render() {
     const { homeGeocode } = this.state
     const { eats } = this.props
-    const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
+    const key =
+      process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
 
     return (
       <div>
         <BaseMap
-          isMarkerShown={true}
-          googleMapURL={`${config.googleMapApi}key=${key}&v=3.exp&libraries=geometry,drawing,places`}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `300px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          center={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
           zoomLevel={settings.zoomLevel}
           markerPostion={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
           markerIcon={gpLogo}
