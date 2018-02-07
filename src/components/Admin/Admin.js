@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
+import firebase, { auth, provider } from '../../config/firebase'
 
 import CardLogin from '../common/CardLogin'
 import EatsList from '../EatsList/EatsList'
@@ -17,8 +18,17 @@ export default class Admin extends Component {
       eatId: '',
       goToAddNew: false,
       goToEdit: false,
+      user: null,
     }
     this.handleAddNew = this.handleAddNew.bind(this)
+  }
+
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user })
+      }
+    })
   }
 
   handleAddNew() {
@@ -26,12 +36,14 @@ export default class Admin extends Component {
   }
 
   handleCardClicked = eatId => {
-    this.setState({ eatId, goToEdit: true })
+    if (this.state.user) {
+      this.setState({ eatId, goToEdit: true })
+    }
   }
 
   render() {
     const { eats } = this.props
-    const { goToAddNew, goToEdit, eatId } = this.state
+    const { goToAddNew, goToEdit, eatId, user } = this.state
 
     if (goToAddNew) return <Redirect to="/eats/new" />
 

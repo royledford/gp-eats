@@ -437,8 +437,8 @@ button,
 [type='reset'],
 [type='button'] {
   display: inline-block;
-  border: var(--button-border-width) var(button-border-style)
-    var(--button-border-color);
+  /* border: var(--button-border-width) var(button-border-style)
+    var(--button-border-color); */
   border-radius: var(--button-border-radius);
   background: var(--button-background);
   color: var(--button-color);
@@ -461,8 +461,8 @@ button:hover,
 [type='submit']:hover,
 [type='reset']:hover,
 [type='button']:hover {
-  border: var(--button-border-width) var(button-border-style)
-    var(--button-border-color);
+  /* border: var(--button-border-width) var(button-border-style)
+    var(--button-border-color); */
   background: var(--button-background-hover);
   color: var(--button-color);
   text-decoration: none;
@@ -474,8 +474,8 @@ button:focus,
 [type='submit']:focus,
 [type='reset']:focus,
 [type='button']:focus {
-  border: var(--button-border-width) var(button-border-style)
-    var(--button-border-color);
+  /* border: var(--button-border-width) var(button-border-style)
+    var(--button-border-color); */
   background: var(--button-background-hover);
   color: var(--button-color);
   text-decoration: none;
@@ -487,8 +487,8 @@ button:active,
 [type='submit']:active,
 [type='reset']:active,
 [type='button']:active {
-  border: var(--button-border-width) var(button-border-style)
-    var(--button-border-color);
+  /* border: var(--button-border-width) var(button-border-style)
+    var(--button-border-color); */
   background: var(--button-background-hover);
   color: var(--button-color);
   text-decoration: none;

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import firebase from '../config/firebase'
+import firebase, { auth, provider } from '../config/firebase'
 
 const DataService = {
   saveEats: function(eat) {
@@ -67,8 +67,8 @@ const DataService = {
 
   deleteEat: async function(id) {
     return new Promise((resolve, reject) => {
-      const eatsRef = firebase.database().ref('eats')
-      eatsRef.child(id).remove()
+      const eatsRef = firebase.database().ref('eats/' + id)
+      eatsRef.remove()
       resolve()
     })
   },

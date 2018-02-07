@@ -14,6 +14,7 @@
 }
 
 .cardlogin--add {
+  margin-left: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,6 +24,27 @@
 
   border-radius: 50%;
   border: 2px solid var(--white);
+}
+
+button.cardlogin--button {
+  margin: 0;
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  color: var(--brandcolor);
+  font-weight: 300;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+button.cardlogin--button:focus {
+  border: none;
+}
+button.cardlogin--button:hover {
+  border: none;
+}
+button.cardlogin--button:active {
+  border: none;
 }
 
 .cardlogin--add:hover {
@@ -56,4 +78,14 @@
 .cardlogin--link:active {
   color: var(--brandcolor);
   background-color: inherit;
+}
+
+.cardlogin--profile {
+  width: 40px;
+  height: 40px;
+}
+
+.cardlogin--profile img {
+  border-radius: 50%;
+  max-width: 100%;
 }

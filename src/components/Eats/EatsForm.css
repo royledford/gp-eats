@@ -50,6 +50,7 @@
 }
 
 .eatsform--button-secondary {
+  margin: 0;
   background-color: transparent;
   border: none;
   color: var(--brandcolor);
