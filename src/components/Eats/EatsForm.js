@@ -15,23 +15,45 @@ export default class EatsForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: '',
       name: '',
       address: '',
       website: '',
       phone: '',
       servesBeer: false,
       category: 'restaurant',
-      checkingAddress: true,
       lat: 0,
       lng: 0,
       addressError: '',
       nameError: '',
       submitLabel: 'Where to Eat?',
       backToList: false,
+      checkingAddress: true,
+      addNew: true,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
+  }
+
+  componentDidMount() {
+    if (this.props.match.path === '/eats/:id') {
+      // we are editing
+
+      DataService.getEat(this.props.match.params.id).then(eat => {
+        this.setState({
+          id: eat.id,
+          name: eat.name,
+          address: eat.address,
+          website: eat.website,
+          phone: eat.phone,
+          servesBeer: eat.servesBeer,
+          category: eat.category,
+          addNew: false,
+          checkingAddress: false,
+        })
+      })
+    }
   }
 
   handleChange(e) {
@@ -43,6 +65,23 @@ export default class EatsForm extends Component {
 
   handleCategoryChange(data) {
     this.setState({ category: data.value })
+  }
+
+  handleAddressFocus = e => {
+    this.setState({ checkingAddress: true })
+  }
+
+  handleDelete = () => {
+    DataService.deleteEat(this.state.id)
+      .then(() => {
+        console.log('then')
+        this.setState({
+          backToList: true,
+        })
+      })
+      .catch(() => {
+        console.log(`Eat: ${this.state.id} could not be deleted.`)
+      })
   }
 
   toggleBeer = e => {
@@ -63,7 +102,7 @@ export default class EatsForm extends Component {
     return status
   }
 
-  getLatLng = address => {
+  getLatLng = () => {
     const prevLabel = this.state.submitLabel
     this.setState({ checkingAddress: true, submitLabel: 'Searching...' })
     var address = this.state.address
@@ -96,7 +135,7 @@ export default class EatsForm extends Component {
     e.preventDefault()
 
     if (this.validInput()) {
-      const eats = {
+      const eat = {
         name: this.state.name,
         address: this.state.address,
         website: this.state.website,
@@ -106,12 +145,20 @@ export default class EatsForm extends Component {
         lat: this.state.lat,
         lng: this.state.lng,
       }
-
-      DataService.saveEats(eats).then(eatId => {
-        this.setState({
-          backToList: true,
+      if (this.state.addNew) {
+        DataService.saveEats(eat).then(eatId => {
+          this.setState({
+            backToList: true,
+          })
         })
-      })
+      } else {
+        //updte
+        DataService.updateEat(this.state.id, eat).then(
+          this.setState({
+            backToList: true,
+          })
+        )
+      }
     }
   }
 
@@ -131,6 +178,7 @@ export default class EatsForm extends Component {
       nameError,
       checkingAddress,
       submitLabel,
+      addNew,
     } = this.state
 
     const enableSubmit =
@@ -145,6 +193,15 @@ export default class EatsForm extends Component {
     return (
       <div className="eatsform--wrap">
         <form onSubmit={this.handleSubmit} className="eatsform--form">
+          <div className="eatsform--controls">
+            <Link to="/eats" className="eatsform--button-link">
+              Nope, take me back
+            </Link>
+            <button className="eatsform--button" disabled={!enableSubmit}>
+              {buttonLabel}
+            </button>
+          </div>
+
           <div className="eatsform--input-wrap">
             <label htmlFor="name" className="eatsform--label">
               Name
@@ -175,6 +232,7 @@ export default class EatsForm extends Component {
               className="eatsform--input"
               onChange={this.handleChange}
               onBlur={this.getLatLng}
+              onFocus={this.handleAddressFocus}
             />
           </div>
 
@@ -222,14 +280,15 @@ export default class EatsForm extends Component {
             onChange={this.handleCategoryChange}
           />
 
-          <div className="eatsform--controls">
-            <Link to="/eats" className="eatsform--button-link">
-              Nope, take me back
-            </Link>
-            <button className="eatsform--button" disabled={!enableSubmit}>
-              {buttonLabel}
-            </button>
-          </div>
+          {!addNew && (
+            <div className="eatsform--footer-controls">
+              <button
+                className="eatsform--button-secondary"
+                onClick={this.handleDelete}>
+                Delete this place
+              </button>
+            </div>
+          )}
         </form>
       </div>
     )

@@ -14,7 +14,9 @@ export default class Admin extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      eatId: '',
       goToAddNew: false,
+      goToEdit: false,
     }
     this.handleAddNew = this.handleAddNew.bind(this)
   }
@@ -23,11 +25,17 @@ export default class Admin extends Component {
     this.setState({ goToAddNew: true })
   }
 
+  handleCardClicked = eatId => {
+    this.setState({ eatId, goToEdit: true })
+  }
+
   render() {
     const { eats } = this.props
-    const { goToAddNew } = this.state
+    const { goToAddNew, goToEdit, eatId } = this.state
 
     if (goToAddNew) return <Redirect to="/eats/new" />
+
+    if (goToEdit) return <Redirect to={`/eats/${eatId}`} />
 
     return (
       <div className="admin--wrap">
@@ -35,7 +43,7 @@ export default class Admin extends Component {
           <CardLogin onAddNew={this.handleAddNew} />
         </div>
         <div className="admin--content">
-          <EatsList eats={eats} />
+          <EatsList eats={eats} cardClicked={this.handleCardClicked} />
         </div>
       </div>
     )

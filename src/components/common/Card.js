@@ -18,7 +18,7 @@ export default class Card extends Component {
   }
 
   handleClick(event) {
-    this.props.onClick()
+    this.props.onClick(event)
   }
 
   render() {

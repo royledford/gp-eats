@@ -6,7 +6,10 @@ import './EatsList.css'
 export default class EatsList extends Component {
   static propTypes = {
     eats: PropTypes.array.isRequired,
-    // cardClicked: PropTypes.func.isRequired,
+    cardClicked: PropTypes.func,
+  }
+  static defaultProps = {
+    cardClicked: () => {},
   }
 
   constructor(props) {
@@ -18,6 +21,7 @@ export default class EatsList extends Component {
 
   handleCardClick = id => {
     this.setState({ activeCard: id })
+    this.props.cardClicked(id)
   }
 
   render() {
@@ -28,7 +32,14 @@ export default class EatsList extends Component {
     if (eats.length > 0) {
       eatsCards = eats.map(eat => {
         const active = activeCard === eat.id
-        return <EatsCard key={eat.id} eatsData={eat} onClick={this.handleCardClick} active={active} />
+        return (
+          <EatsCard
+            key={eat.id}
+            eatsData={eat}
+            onClick={this.handleCardClick}
+            active={active}
+          />
+        )
       })
     }
 

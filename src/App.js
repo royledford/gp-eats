@@ -17,6 +17,7 @@ class App extends Component {
             <Route exact path="/" component={MainContainer} />
             <Route exact path="/eats" component={AdminContainer} />
             <Route exact path="/eats/new" component={EatsForm} />
+            <Route exact path="/eats/:id" component={EatsForm} />
           </Switch>
         </Router>
       </React.Fragment>

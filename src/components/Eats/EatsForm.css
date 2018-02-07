@@ -40,7 +40,22 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 20px 0;
+  padding: 6px 0 0 0;
+}
+
+.eatsform--footer-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.eatsform--button-secondary {
+  background-color: transparent;
+  border: none;
+  color: var(--brandcolor);
+  font-weight: 300;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
 .eatsform--button {

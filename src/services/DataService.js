@@ -20,7 +20,6 @@ const DataService = {
       eatsRef.on('value', snapshot => {
         let eats = snapshot.val()
         if (eats) {
-          console.log(eats)
           let newState = []
           for (let eat in eats) {
             newState.push({
@@ -41,27 +40,38 @@ const DataService = {
         }
       })
     })
-
-    // return axios
-    //   .get('https://api.github.com/repos/royledford/gp-eats/contents/data.json')
-    //   .then(function(response) {
-    //     return response.data
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error)
-    //   })
   },
 
-  // getInvest: function(id) {
-  //   return axios
-  //     .get(process.env.REACT_APP_BASE_URL + '/invests/' + id)
-  //     .then(function(response) {
-  //       return response.data
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error)
-  //     })
-  // },
+  getEat: function(id) {
+    return new Promise((resolve, reject) => {
+      const eatsRef = firebase.database().ref('eats/' + id)
+      eatsRef.once('value', snapshot => {
+        let eats = snapshot.val()
+        if (eats) {
+          eats.id = id
+          resolve(eats)
+        } else {
+          reject("Can't find any places")
+        }
+      })
+    })
+  },
+
+  updateEat: function(id, eat) {
+    return new Promise((resolve, reject) => {
+      const eatsRef = firebase.database().ref('eats/' + id)
+      eatsRef.set(eat)
+      resolve()
+    })
+  },
+
+  deleteEat: async function(id) {
+    return new Promise((resolve, reject) => {
+      const eatsRef = firebase.database().ref('eats')
+      eatsRef.child(id).remove()
+      resolve()
+    })
+  },
 }
 
 export default DataService
