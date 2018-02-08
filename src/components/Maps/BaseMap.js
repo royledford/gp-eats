@@ -82,7 +82,13 @@ const BaseMap = compose(
     {props.directions && (
       <DirectionsRenderer
         directions={props.directions}
-        options={{ suppressMarkers: true }}
+        options={{
+          suppressMarkers: true,
+          polylineOptions: {
+            strokeColor: 'rgba(145, 131, 61, 0.6)',
+            strokeWeight: 8,
+          },
+        }}
       />
     )}
   </GoogleMap>
