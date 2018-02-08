@@ -16,6 +16,7 @@ export default class Main extends Component {
     selectedCardId: PropTypes.string,
     directions: PropTypes.object,
     zoomLevel: PropTypes.number,
+    markerHover: PropTypes.func.isRequired,
   }
   static defaultProps = {
     selectedCardId: '',
@@ -33,6 +34,7 @@ export default class Main extends Component {
       directions,
       homeMarkerClicked,
       zoomLevel,
+      markerHover,
     } = this.props
 
     return (
@@ -49,6 +51,7 @@ export default class Main extends Component {
               selectedCardId={selectedCardId}
               homeMarkerClicked={homeMarkerClicked}
               zoomLevel={zoomLevel}
+              markerHover={markerHover}
             />
           </div>
           <div className="main--list">

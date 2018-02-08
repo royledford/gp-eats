@@ -20,6 +20,7 @@ export default class MainContainer extends Component {
     this.handleMarkerClicked = this.handleMarkerClicked.bind(this)
     this.handleCardClicked = this.handleCardClicked.bind(this)
     this.handleHomeClicked = this.handleHomeClicked.bind(this)
+    this.handleMarkerHover = this.handleMarkerHover.bind(this)
   }
 
   componentWillMount() {
@@ -80,6 +81,13 @@ export default class MainContainer extends Component {
   }
 
   handleMarkerClicked(id) {
+    this.updateTooltip(id)
+    this.setDirections(id)
+    this.setState({ selectedCardId: id })
+  }
+
+  handleMarkerHover(id) {
+    this.updateTooltip(id)
     this.setState({ selectedCardId: id })
   }
 
@@ -114,6 +122,7 @@ export default class MainContainer extends Component {
         directions={directions}
         homeMarkerClicked={this.handleHomeClicked}
         zoomLevel={zoomLevel}
+        markerHover={this.handleMarkerHover}
       />
     )
   }

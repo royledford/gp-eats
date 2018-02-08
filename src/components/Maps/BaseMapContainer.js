@@ -29,6 +29,7 @@ export default class BaseMapContainer extends Component {
     selectedCardId: PropTypes.string,
     homeMarkerClicked: PropTypes.func.isRequired,
     zoomLevel: PropTypes.number,
+    markerHover: PropTypes.func.isRequired,
     // mapHeight: PropTypes.number,
   }
   static defaultProps = {
@@ -84,6 +85,7 @@ export default class BaseMapContainer extends Component {
       selectedCardId,
       homeMarkerClicked,
       zoomLevel,
+      markerHover,
     } = this.props
     const center = mapCenter ? mapCenter : homeGeocode
     // const zoomLevel = mapCenter ? 16 : settings.zoomLevel
@@ -101,6 +103,7 @@ export default class BaseMapContainer extends Component {
           routeDirections={directions}
           selectedMarkerId={selectedCardId}
           homeMarkerClicked={homeMarkerClicked}
+          markerHover={markerHover}
           // mapHeight={mapHeight}
         />
       </div>

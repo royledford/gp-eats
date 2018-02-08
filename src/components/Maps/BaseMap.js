@@ -97,6 +97,7 @@ const BaseMap = compose(
           position={{ lat: location.lat, lng: location.lng }}
           icon={markerIcon}
           onClick={() => props.markerClicked(location.id)}
+          onMouseOver={() => props.markerHover(location.id)}
         />
       )
     })}
