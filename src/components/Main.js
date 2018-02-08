@@ -10,13 +10,16 @@ export default class Main extends Component {
   static propTypes = {
     eats: PropTypes.array.isRequired,
     onCardClicked: PropTypes.func.isRequired,
-    mapCenter: PropTypes.object,
     markerClicked: PropTypes.func.isRequired,
+    homeMarkerClicked: PropTypes.func.isRequired,
+    mapCenter: PropTypes.object,
     selectedCardId: PropTypes.string,
     directions: PropTypes.object,
+    zoomLevel: PropTypes.number,
   }
   static defaultProps = {
     selectedCardId: '',
+    zoomLevel: 14,
   }
 
   render() {
@@ -28,6 +31,8 @@ export default class Main extends Component {
       markerClicked,
       selectedCardId,
       directions,
+      homeMarkerClicked,
+      zoomLevel,
     } = this.props
 
     return (
@@ -41,6 +46,9 @@ export default class Main extends Component {
               mapCenter={mapCenter}
               markerClicked={markerClicked}
               directions={directions}
+              selectedCardId={selectedCardId}
+              homeMarkerClicked={homeMarkerClicked}
+              zoomLevel={zoomLevel}
             />
           </div>
           <div className="main--list">

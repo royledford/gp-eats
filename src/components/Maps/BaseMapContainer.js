@@ -26,12 +26,17 @@ export default class BaseMapContainer extends Component {
         lng: PropTypes.number,
       }),
     }),
-    mapHeight: PropTypes.number,
+    selectedCardId: PropTypes.string,
+    homeMarkerClicked: PropTypes.func.isRequired,
+    zoomLevel: PropTypes.number,
+    // mapHeight: PropTypes.number,
   }
   static defaultProps = {
     markerClicked: () => {},
     directions: null,
-    mapHeight: 300,
+    selectedMarkerId: '',
+    zoomLevel: 14,
+    // mapHeight: 300,
   }
 
   constructor(props) {
@@ -76,14 +81,16 @@ export default class BaseMapContainer extends Component {
       mapCenter,
       markerClicked,
       directions,
-      mapHeight,
+      selectedCardId,
+      homeMarkerClicked,
+      zoomLevel,
     } = this.props
     const center = mapCenter ? mapCenter : homeGeocode
     // const zoomLevel = mapCenter ? 16 : settings.zoomLevel
     return (
       <div>
         <BaseMap
-          zoomLevel={settings.zoomLevel}
+          zoomLevel={zoomLevel}
           center={center}
           homeMarkerPostion={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
           markerIcon={gpLogo}
@@ -92,7 +99,9 @@ export default class BaseMapContainer extends Component {
           tooltip={tooltip}
           markerClicked={markerClicked}
           routeDirections={directions}
-          mapHeight={mapHeight}
+          selectedMarkerId={selectedCardId}
+          homeMarkerClicked={homeMarkerClicked}
+          // mapHeight={mapHeight}
         />
       </div>
     )

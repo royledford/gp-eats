@@ -10,12 +10,16 @@ export default class MainContainer extends Component {
     this.state = {
       eats: [],
       mapTooltip: null,
+      mapCenter: null,
       selectedEat: '',
       selectedCardId: '',
+      directions: null,
     }
+
     this.updateTooltip = this.updateTooltip.bind(this)
     this.handleMarkerClicked = this.handleMarkerClicked.bind(this)
     this.handleCardClicked = this.handleCardClicked.bind(this)
+    this.handleHomeClicked = this.handleHomeClicked.bind(this)
   }
 
   componentWillMount() {
@@ -27,7 +31,7 @@ export default class MainContainer extends Component {
           return -1
         }
       })
-      this.setState({ eats: sortedEats })
+      this.setState({ eats: sortedEats, zoomLevel: Settings.zoomLevel })
     })
   }
 
@@ -71,11 +75,23 @@ export default class MainContainer extends Component {
         </div>
       </InfoBox>
     )
-    this.setState({ mapTooltip, mapCenter: { lat: eat.lat, lng: eat.lng } })
+    // this.setState({ mapTooltip, mapCenter: { lat: eat.lat, lng: eat.lng } })
+    this.setState({ mapTooltip, selectedCardId: id })
   }
 
   handleMarkerClicked(id) {
     this.setState({ selectedCardId: id })
+  }
+
+  handleHomeClicked() {
+    this.setState({
+      selectedCardId: '',
+      selectedEat: '',
+      directions: null,
+      mapTooltip: null,
+      mapCenter: { lat: Settings.lat, lng: Settings.lng },
+      zoomLevel: Settings.zoomLevel,
+    })
   }
 
   render() {
@@ -85,6 +101,7 @@ export default class MainContainer extends Component {
       mapCenter,
       selectedCardId,
       directions,
+      zoomLevel,
     } = this.state
     return (
       <Main
@@ -95,6 +112,8 @@ export default class MainContainer extends Component {
         markerClicked={this.handleMarkerClicked}
         selectedCardId={selectedCardId}
         directions={directions}
+        homeMarkerClicked={this.handleHomeClicked}
+        zoomLevel={zoomLevel}
       />
     )
   }

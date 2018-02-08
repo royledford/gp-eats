@@ -3,4 +3,9 @@ module.exports = {
   zoomLevel: 14,
   lat: 26.1288044,
   lng: -80.1449954,
+  markerSize: {
+    defaultMarkerSize: 22,
+    selectedMarkerSize: 32,
+    secondaryMarkerSize: 12,
+  },
 }

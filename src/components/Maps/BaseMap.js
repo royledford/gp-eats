@@ -12,6 +12,7 @@ import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox' // esl
 
 import mapStyle from '../../styles/mapStyle.json'
 import config from '../../config/config'
+import settings from '../../config/settings'
 import gpLogo from '../../img/map-gplogo.png'
 
 // const google = window.google
@@ -32,6 +33,7 @@ const BaseMap = compose(
   lifecycle({
     componentWillReceiveProps(nextProps) {
       const dirs = nextProps.routeDirections
+
       if (dirs) {
         const DirectionsService = new window.google.maps.DirectionsService()
 
@@ -54,6 +56,10 @@ const BaseMap = compose(
             }
           }
         )
+      } else {
+        this.setState({
+          directions: null,
+        })
       }
     },
   })
@@ -62,19 +68,34 @@ const BaseMap = compose(
     defaultZoom={props.zoomLevel}
     zoom={props.zoomLevel}
     center={props.center}
+    options={{ gestureHandling: 'greedy' }}
     defaultOptions={{ styles: mapStyle }}>
     {props.tooltip}
     <Marker
       position={props.homeMarkerPostion}
       defaultAnimation={2}
       icon={gpLogo}
+      onClick={props.homeMarkerClicked}
     />
     {props.eatLocations.map(location => {
+      let markerSize = settings.markerSize.defaultMarkerSize
+      if (props.directions) {
+        markerSize = settings.markerSize.secondaryMarkerSize
+        if (props.selectedMarkerId === location.id) {
+          markerSize = settings.markerSize.selectedMarkerSize
+        }
+      }
+
+      let markerIcon = {
+        url: props.eatMarker,
+        scaledSize: new window.google.maps.Size(markerSize, markerSize * 1.45),
+      }
+
       return (
         <Marker
           key={location.id}
           position={{ lat: location.lat, lng: location.lng }}
-          icon={props.eatMarker}
+          icon={markerIcon}
           onClick={() => props.markerClicked(location.id)}
         />
       )
