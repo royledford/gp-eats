@@ -10,27 +10,42 @@ export default class Main extends Component {
   static propTypes = {
     eats: PropTypes.array.isRequired,
     onCardClicked: PropTypes.func.isRequired,
+    mapCenter: PropTypes.object,
+    markerClicked: PropTypes.func.isRequired,
+    selectedCardId: PropTypes.string,
   }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      someState: true,
-    }
+  static defaultProps = {
+    selectedCardId: '',
   }
 
   render() {
-    const { eats, onCardClicked, mapTooltip } = this.props
+    const {
+      eats,
+      onCardClicked,
+      mapTooltip,
+      mapCenter,
+      markerClicked,
+      selectedCardId,
+    } = this.props
 
     return (
       <div className="main--wrap-outer">
         <Header />
         <div className="main--content">
           <div className="main--map">
-            <BaseMapContainer eats={eats} tooltip={mapTooltip} />
+            <BaseMapContainer
+              eats={eats}
+              tooltip={mapTooltip}
+              mapCenter={mapCenter}
+              markerClicked={markerClicked}
+            />
           </div>
           <div className="main--list">
-            <EatsList eats={eats} cardClicked={onCardClicked} />
+            <EatsList
+              eats={eats}
+              cardClicked={onCardClicked}
+              selectedCardId={selectedCardId}
+            />
           </div>
         </div>
       </div>

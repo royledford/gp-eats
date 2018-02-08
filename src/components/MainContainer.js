@@ -10,8 +10,11 @@ export default class MainContainer extends Component {
     this.state = {
       eats: [],
       mapTooltip: null,
+      selectedEat: '',
+      selectedCardId: '',
     }
     this.updateTooltip = this.updateTooltip.bind(this)
+    this.handleMarkerClicked = this.handleMarkerClicked.bind(this)
   }
 
   componentWillMount() {
@@ -30,28 +33,40 @@ export default class MainContainer extends Component {
   updateTooltip(id) {
     const eats = this.state.eats
     const eat = eats.filter(eat => eat.id === id)[0]
-    console.log('eat lat', eat.lat, eat.lng)
+
     const mapTooltip = (
       <InfoBox
         position={new window.google.maps.LatLng(eat.lat, eat.lng)}
         options={{ closeBoxURL: ``, enableEventPropagation: true }}>
         <div
-          style={{ backgroundColor: `yellow`, opacity: 0.75, padding: `12px` }}>
+          style={{
+            backgroundColor: 'rgb(145, 131, 61)',
+            padding: `4px`,
+            borderRadius: '3px',
+          }}>
           <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
-            Hello, Taipei!
+            {eat.name}
           </div>
         </div>
       </InfoBox>
     )
-    this.setState({ mapTooltip })
+    this.setState({ mapTooltip, mapCenter: { lat: eat.lat, lng: eat.lng } })
+  }
+
+  handleMarkerClicked(id) {
+    this.setState({ selectedCardId: id })
   }
 
   render() {
+    const { eats, mapTooltip, mapCenter, selectedCardId } = this.state
     return (
       <Main
-        eats={this.state.eats}
-        mapTooltip={this.state.mapTooltip}
+        eats={eats}
+        mapTooltip={mapTooltip}
         onCardClicked={this.updateTooltip}
+        mapCenter={mapCenter}
+        markerClicked={this.handleMarkerClicked}
+        selectedCardId={selectedCardId}
       />
     )
   }

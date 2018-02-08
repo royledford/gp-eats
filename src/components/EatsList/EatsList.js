@@ -7,9 +7,11 @@ export default class EatsList extends Component {
   static propTypes = {
     eats: PropTypes.array.isRequired,
     cardClicked: PropTypes.func,
+    selectedCardId: PropTypes.string,
   }
   static defaultProps = {
     cardClicked: () => {},
+    selectedCardId: '',
   }
 
   constructor(props) {
@@ -19,13 +21,19 @@ export default class EatsList extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedCardId !== '') {
+      this.setState({ activeCard: nextProps.selectedCardId })
+    }
+  }
+
   handleCardClick = id => {
     this.setState({ activeCard: id })
     this.props.cardClicked(id)
   }
 
   render() {
-    const { eats } = this.props
+    const { eats, selectedCardId } = this.props
     const { activeCard } = this.state
 
     let eatsCards = null
@@ -38,6 +46,7 @@ export default class EatsList extends Component {
             eatsData={eat}
             onClick={this.handleCardClick}
             active={active}
+            scrollToView={eat.id === selectedCardId}
           />
         )
       })

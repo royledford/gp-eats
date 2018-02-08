@@ -13,6 +13,14 @@ export default class BaseMapContainer extends Component {
   static propTypes = {
     eats: PropTypes.array.isRequired,
     tooltip: PropTypes.any,
+    mapCenter: PropTypes.shape({
+      lat: PropTypes.number,
+      lng: PropTypes.number,
+    }),
+    markerClicked: PropTypes.func,
+  }
+  static defaultProps = {
+    markerClicked: () => {},
   }
 
   constructor(props) {
@@ -22,12 +30,11 @@ export default class BaseMapContainer extends Component {
         lat: 0,
         lng: 0,
       },
-      eats: [],
     }
   }
 
   componentDidMount() {
-    // Get all the places
+    // Get the home location from settings.
     var address = settings.homeAddress
     Geocode.getGeocodeFromAddress(address)
       .then(location => {
@@ -52,19 +59,23 @@ export default class BaseMapContainer extends Component {
 
   render() {
     const { homeGeocode } = this.state
-    const { eats, tooltip } = this.props
+    const { eats, tooltip, mapCenter, markerClicked } = this.props
+    const center = mapCenter ? mapCenter : homeGeocode
+    const zoomLevel = mapCenter ? 16 : settings.zoomLevel
     const key =
       process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
 
     return (
       <div>
         <BaseMap
-          zoomLevel={settings.zoomLevel}
-          markerPostion={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
+          zoomLevel={zoomLevel}
+          center={center}
+          homeMarkerPostion={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
           markerIcon={gpLogo}
           eatLocations={eats}
           eatMarker={eatMarker}
           tooltip={tooltip}
+          markerClicked={markerClicked}
         />
       </div>
     )

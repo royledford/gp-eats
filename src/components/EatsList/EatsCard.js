@@ -20,6 +20,7 @@ export default class EatsCard extends Component {
       address: PropTypes.string,
       phone: PropTypes.string,
       website: PropTypes.string,
+      scrollToView: PropTypes.bool,
     }),
     onClick: PropTypes.func.isRequired,
     active: PropTypes.bool,
@@ -27,11 +28,18 @@ export default class EatsCard extends Component {
 
   static defaultProps = {
     active: false,
+    scrollToView: false,
   }
 
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.scrollToView) {
+      this.currentCard.scrollIntoView({ block: 'center', behavior: 'smooth' })
+    }
   }
 
   handleClick(event) {
@@ -47,7 +55,11 @@ export default class EatsCard extends Component {
     // const activeClass = this.props.active ? 'eatscard--card-active' : ''
     return (
       <Card onClick={this.handleClick} active={active}>
-        <div className="eatscard-wrap">
+        <div
+          className="eatscard-wrap"
+          ref={div => {
+            this.currentCard = div
+          }}>
           <h1 className="eatscard--name">{eatsData.name}</h1>
           <div className="eatscard--info">
             <p className="eatscard--address">{address}</p>
