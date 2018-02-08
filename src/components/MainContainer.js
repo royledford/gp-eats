@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import DataService from '../services/DataService'
 import Main from './Main'
-const { InfoBox } = require('react-google-maps/lib/components/addons/InfoBox')
+import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
+import Settings from '../config/settings'
 
 export default class MainContainer extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class MainContainer extends Component {
     }
     this.updateTooltip = this.updateTooltip.bind(this)
     this.handleMarkerClicked = this.handleMarkerClicked.bind(this)
+    this.handleCardClicked = this.handleCardClicked.bind(this)
   }
 
   componentWillMount() {
@@ -29,9 +31,29 @@ export default class MainContainer extends Component {
     })
   }
 
+  handleCardClicked(id) {
+    this.updateTooltip(id)
+    this.setDirections(id)
+  }
+
+  setDirections(id) {
+    const eat = this.state.eats.filter(eat => eat.id === id)[0]
+    this.setState({
+      directions: {
+        from: {
+          lat: Settings.lat,
+          lng: Settings.lng,
+        },
+        to: {
+          lat: eat.lat,
+          lng: eat.lng,
+        },
+      },
+    })
+  }
+
   updateTooltip(id) {
-    const eats = this.state.eats
-    const eat = eats.filter(eat => eat.id === id)[0]
+    const eat = this.state.eats.filter(eat => eat.id === id)[0]
 
     const mapTooltip = (
       <InfoBox
@@ -57,15 +79,22 @@ export default class MainContainer extends Component {
   }
 
   render() {
-    const { eats, mapTooltip, mapCenter, selectedCardId } = this.state
+    const {
+      eats,
+      mapTooltip,
+      mapCenter,
+      selectedCardId,
+      directions,
+    } = this.state
     return (
       <Main
         eats={eats}
         mapTooltip={mapTooltip}
-        onCardClicked={this.updateTooltip}
+        onCardClicked={this.handleCardClicked}
         mapCenter={mapCenter}
         markerClicked={this.handleMarkerClicked}
         selectedCardId={selectedCardId}
+        directions={directions}
       />
     )
   }

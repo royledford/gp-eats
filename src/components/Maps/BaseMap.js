@@ -1,10 +1,11 @@
 import React from 'react'
-import { compose, withProps } from 'recompose'
+import { compose, withProps, lifecycle } from 'recompose'
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
+  DirectionsRenderer,
 } from 'react-google-maps'
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox' // eslint-disable-line
 // import _ from 'lodash'
@@ -27,7 +28,35 @@ const BaseMap = compose(
   }),
 
   withScriptjs,
-  withGoogleMap
+  withGoogleMap,
+  lifecycle({
+    componentWillReceiveProps(nextProps) {
+      const dirs = nextProps.routeDirections
+      if (dirs) {
+        const DirectionsService = new window.google.maps.DirectionsService()
+
+        DirectionsService.route(
+          {
+            origin: new window.google.maps.LatLng(dirs.from.lat, dirs.from.lng),
+            destination: new window.google.maps.LatLng(
+              dirs.to.lat,
+              dirs.to.lng
+            ),
+            travelMode: window.google.maps.TravelMode.DRIVING,
+          },
+          (result, status) => {
+            if (status === window.google.maps.DirectionsStatus.OK) {
+              this.setState({
+                directions: result,
+              })
+            } else {
+              console.error(`error fetching directions ${result}`)
+            }
+          }
+        )
+      }
+    },
+  })
 )(props => (
   <GoogleMap
     defaultZoom={props.zoomLevel}
@@ -50,6 +79,12 @@ const BaseMap = compose(
         />
       )
     })}
+    {props.directions && (
+      <DirectionsRenderer
+        directions={props.directions}
+        options={{ suppressMarkers: true }}
+      />
+    )}
   </GoogleMap>
 ))
 

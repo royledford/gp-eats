@@ -13,6 +13,7 @@ export default class Main extends Component {
     mapCenter: PropTypes.object,
     markerClicked: PropTypes.func.isRequired,
     selectedCardId: PropTypes.string,
+    directions: PropTypes.object,
   }
   static defaultProps = {
     selectedCardId: '',
@@ -26,6 +27,7 @@ export default class Main extends Component {
       mapCenter,
       markerClicked,
       selectedCardId,
+      directions,
     } = this.props
 
     return (
@@ -38,6 +40,7 @@ export default class Main extends Component {
               tooltip={mapTooltip}
               mapCenter={mapCenter}
               markerClicked={markerClicked}
+              directions={directions}
             />
           </div>
           <div className="main--list">

@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import BaseMap from './BaseMap'
 import BaseMap from './BaseMap'
 import Geocode from '../../services/Geocode'
-// import DataService from '../../services/DataService'
 import settings from '../../config/settings'
 import gpLogo from '../../img/map-gplogo.png'
 import eatMarker from '../../img/map-eat.png'
@@ -17,9 +15,21 @@ export default class BaseMapContainer extends Component {
       lng: PropTypes.number,
     }),
     markerClicked: PropTypes.func,
+    // if driections are provided, a route will be rendered.
+    directions: PropTypes.shape({
+      from: PropTypes.shape({
+        lat: PropTypes.number,
+        lng: PropTypes.number,
+      }),
+      to: PropTypes.shape({
+        lat: PropTypes.number,
+        lng: PropTypes.number,
+      }),
+    }),
   }
   static defaultProps = {
     markerClicked: () => {},
+    directions: null,
   }
 
   constructor(props) {
@@ -58,14 +68,13 @@ export default class BaseMapContainer extends Component {
 
   render() {
     const { homeGeocode } = this.state
-    const { eats, tooltip, mapCenter, markerClicked } = this.props
+    const { eats, tooltip, mapCenter, markerClicked, directions } = this.props
     const center = mapCenter ? mapCenter : homeGeocode
-    const zoomLevel = mapCenter ? 16 : settings.zoomLevel
-
+    // const zoomLevel = mapCenter ? 16 : settings.zoomLevel
     return (
       <div>
         <BaseMap
-          zoomLevel={zoomLevel}
+          zoomLevel={settings.zoomLevel}
           center={center}
           homeMarkerPostion={{ lat: homeGeocode.lat, lng: homeGeocode.lng }}
           markerIcon={gpLogo}
@@ -73,6 +82,7 @@ export default class BaseMapContainer extends Component {
           eatMarker={eatMarker}
           tooltip={tooltip}
           markerClicked={markerClicked}
+          routeDirections={directions}
         />
       </div>
     )
