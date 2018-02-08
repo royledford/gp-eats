@@ -26,10 +26,12 @@ export default class BaseMapContainer extends Component {
         lng: PropTypes.number,
       }),
     }),
+    mapHeight: PropTypes.number,
   }
   static defaultProps = {
     markerClicked: () => {},
     directions: null,
+    mapHeight: 300,
   }
 
   constructor(props) {
@@ -68,7 +70,14 @@ export default class BaseMapContainer extends Component {
 
   render() {
     const { homeGeocode } = this.state
-    const { eats, tooltip, mapCenter, markerClicked, directions } = this.props
+    const {
+      eats,
+      tooltip,
+      mapCenter,
+      markerClicked,
+      directions,
+      mapHeight,
+    } = this.props
     const center = mapCenter ? mapCenter : homeGeocode
     // const zoomLevel = mapCenter ? 16 : settings.zoomLevel
     return (
@@ -83,6 +92,7 @@ export default class BaseMapContainer extends Component {
           tooltip={tooltip}
           markerClicked={markerClicked}
           routeDirections={directions}
+          mapHeight={mapHeight}
         />
       </div>
     )

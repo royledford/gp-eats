@@ -18,6 +18,38 @@
   background-color: var(--accent-color-dark);
 }
 
+.main--map-container {
+  height: 300px;
+}
+
 .main--list {
   padding-top: 300px;
+}
+
+@media screen and (min-width: 600px) {
+  .main--content {
+    display: flex;
+  }
+
+  .main--map {
+    top: 70px;
+    left: 300px;
+    height: 100%;
+    width: calc(100% - 300px);
+
+    order: 2;
+  }
+
+  .main--map-container {
+    height: calc(100vh - 70px);
+  }
+
+  .main--list {
+    position: relative;
+    order: 1;
+    padding-top: 0;
+    z-index: 3;
+    width: 300px;
+    box-shadow: 3px 0px 9px 4px rgba(0, 0, 0, 0.4);
+  }
 }
