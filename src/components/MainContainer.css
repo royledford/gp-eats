@@ -1,0 +1,19 @@
+.maincontainer--wrapper {
+  width: 200px;
+  text-align: center;
+}
+
+.infoBox {
+  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.4);
+}
+
+.maincontainer--popup-content {
+  background-color: rgb(145, 131, 61);
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid white;
+  max-width: 360px;
+  border-radius: 2px;
+  overflow-y: auto;
+  max-height: 60px;
+}

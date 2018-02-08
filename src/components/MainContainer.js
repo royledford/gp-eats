@@ -3,6 +3,7 @@ import DataService from '../services/DataService'
 import Main from './Main'
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 import Settings from '../config/settings'
+import './MainContainer.css'
 
 export default class MainContainer extends Component {
   constructor(props) {
@@ -63,16 +64,18 @@ export default class MainContainer extends Component {
     const mapTooltip = (
       <InfoBox
         position={new window.google.maps.LatLng(eat.lat, eat.lng)}
-        options={{ closeBoxURL: ``, enableEventPropagation: true }}>
-        <div
-          style={{
-            backgroundColor: 'rgb(145, 131, 61)',
-            padding: `4px`,
-            borderRadius: '3px',
-          }}>
-          <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
-            {eat.name}
-          </div>
+        style={{ overflow: 'visible' }}
+        options={{
+          closeBoxURL: ``,
+          enableEventPropagation: true,
+          alignBottom: true,
+          pixelOffset: new window.google.maps.Size(
+            -100,
+            -Settings.markerSize.selectedMarkerSize - 14
+          ),
+        }}>
+        <div className="maincontainer--wrapper">
+          <div className="maincontainer--popup-content">{eat.name}</div>
         </div>
       </InfoBox>
     )

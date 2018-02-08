@@ -6,6 +6,6 @@ module.exports = {
   markerSize: {
     defaultMarkerSize: 22,
     selectedMarkerSize: 32,
-    secondaryMarkerSize: 12,
+    secondaryMarkerSize: 18,
   },
 }
