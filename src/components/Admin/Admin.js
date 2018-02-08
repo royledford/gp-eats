@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
-import firebase, { auth, provider } from '../../config/firebase'
+import { auth } from '../../config/firebase'
 
 import CardLogin from '../common/CardLogin'
 import EatsList from '../EatsList/EatsList'
@@ -43,7 +43,7 @@ export default class Admin extends Component {
 
   render() {
     const { eats } = this.props
-    const { goToAddNew, goToEdit, eatId, user } = this.state
+    const { goToAddNew, goToEdit, eatId } = this.state
 
     if (goToAddNew) return <Redirect to="/eats/new" />
 

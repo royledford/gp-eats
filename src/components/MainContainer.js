@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import DataService from '../services/DataService'
 import Main from './Main'
 const { InfoBox } = require('react-google-maps/lib/components/addons/InfoBox')
-const google = window.google
 
 export default class MainContainer extends Component {
   constructor(props) {

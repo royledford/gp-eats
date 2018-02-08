@@ -5,7 +5,6 @@ import BaseMap from './BaseMap'
 import Geocode from '../../services/Geocode'
 // import DataService from '../../services/DataService'
 import settings from '../../config/settings'
-import config from '../../config/config'
 import gpLogo from '../../img/map-gplogo.png'
 import eatMarker from '../../img/map-eat.png'
 
@@ -62,8 +61,6 @@ export default class BaseMapContainer extends Component {
     const { eats, tooltip, mapCenter, markerClicked } = this.props
     const center = mapCenter ? mapCenter : homeGeocode
     const zoomLevel = mapCenter ? 16 : settings.zoomLevel
-    const key =
-      process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
 
     return (
       <div>

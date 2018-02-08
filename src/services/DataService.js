@@ -1,5 +1,4 @@
-import axios from 'axios'
-import firebase, { auth, provider } from '../config/firebase'
+import firebase from '../config/firebase'
 
 const DataService = {
   saveEats: function(eat) {

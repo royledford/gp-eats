@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 import Header from '../Header'
 import Admin from './Admin'
@@ -15,9 +14,6 @@ export default class AdminContainer extends Component {
 
   componentWillMount() {
     DataService.getEats().then(eats => {
-      // const result = atob(eats.content)
-      // const parsedResult = JSON.parse(eats)
-      // const formattedEats = parsedResult.eats
       this.setState({ eats: eats })
     })
   }

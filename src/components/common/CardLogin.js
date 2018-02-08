@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import firebase, { auth, provider } from '../../config/firebase'
+import { auth, provider } from '../../config/firebase'
 import Card from './Card'
 import TiPlus from 'react-icons/lib/ti/plus'
-import { isUserAdmin } from '../../services/UserService'
 
 import './CardLogin.css'
 
@@ -75,7 +74,7 @@ export default class CardLogin extends Component {
     // UserAvatar
     const avatar = this.state.user ? (
       <div className="cardlogin--profile">
-        <img src={this.state.user.photoURL} />
+        <img src={this.state.user.photoURL} alt="User profile" />
       </div>
     ) : null
 

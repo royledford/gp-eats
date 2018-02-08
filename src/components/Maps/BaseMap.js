@@ -1,14 +1,13 @@
 import React from 'react'
-import { compose, withProps, lifecycle } from 'recompose'
+import { compose, withProps } from 'recompose'
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
 } from 'react-google-maps'
-import { SearchBox } from 'react-google-maps/lib/components/places/SearchBox'
-import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
-import _ from 'lodash'
+import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox' // eslint-disable-line
+// import _ from 'lodash'
 
 import mapStyle from '../../styles/mapStyle.json'
 import config from '../../config/config'
