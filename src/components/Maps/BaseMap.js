@@ -68,8 +68,7 @@ const BaseMap = compose(
     defaultZoom={props.zoomLevel}
     zoom={props.zoomLevel}
     center={props.center}
-    options={{ gestureHandling: 'greedy' }}
-    defaultOptions={{ styles: mapStyle }}>
+    defaultOptions={{ styles: mapStyle, gestureHandling: 'greedy' }}>
     {props.tooltip}
     <Marker
       position={props.homeMarkerPostion}
