@@ -1,0 +1,48 @@
+.one {
+  animation: logoAni 3s infinite;
+  transform-origin: bottom;
+}
+
+.bolt {
+  transform-origin: bottom;
+  /* transform: translateY(56px) translateX(10px) scale(0.5); */
+  /* fill: white; */
+  animation: boltAni 3s infinite;
+  animation-delay: 2.4s;
+}
+
+@keyframes logoAni {
+  0% {
+    transform: scaleY(1);
+  }
+  45% {
+    transform: scaleY(0.8);
+  }
+  65% {
+    transform: scaleY(0.8);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes boltAni {
+  0% {
+    transform: translateY(56px) translateX(18px) scale(0.75);
+    opacity: 1;
+  }
+  45% {
+    transform: scaleY(0.8);
+  }
+  65% {
+    transform: scaleY(0.8);
+  }
+  95% {
+    transform: scaleY(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(56px) translateX(18px) scale(0.5);
+    opacity: 0;
+  }
+}

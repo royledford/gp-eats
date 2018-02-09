@@ -7,6 +7,8 @@ import EatsForm from './components/Eats/EatsForm'
 import Header from './components/Header'
 import './App.css'
 
+import LogoAnimated from './components/common/LogoAnimated'
+
 class App extends Component {
   render() {
     return (
@@ -19,6 +21,7 @@ class App extends Component {
               <Route exact path="/eats" component={AdminContainer} />
               <Route exact path="/eats/new" component={EatsForm} />
               <Route exact path="/eats/:id" component={EatsForm} />
+              <Route exact path="/play" component={LogoAnimated} />
             </Switch>
           </React.Fragment>
         </Router>
