@@ -66,11 +66,16 @@ const BaseMap = compose(
 )(props => (
   <GoogleMap
     defaultZoom={props.zoomLevel}
-    zoom={props.zoomLevel}
+    // zoom={props.zoomLevel}
     center={props.center}
-    defaultOptions={{ styles: mapStyle, gestureHandling: 'greedy' }}>
+    defaultOptions={{
+      styles: mapStyle,
+      gestureHandling: 'greedy',
+      mapTypeControl: false,
+    }}>
     {props.tooltip}
     <Marker
+      key="home"
       position={props.homeMarkerPostion}
       defaultAnimation={2}
       icon={gpLogo}

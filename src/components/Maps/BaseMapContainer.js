@@ -89,6 +89,7 @@ export default class BaseMapContainer extends Component {
     } = this.props
     const center = mapCenter ? mapCenter : homeGeocode
     // const zoomLevel = mapCenter ? 16 : settings.zoomLevel
+
     return (
       <div>
         <BaseMap

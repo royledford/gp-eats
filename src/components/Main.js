@@ -20,7 +20,7 @@ export default class Main extends Component {
   }
   static defaultProps = {
     selectedCardId: '',
-    zoomLevel: 14,
+    // zoomLevel: 14,
   }
 
   render() {
