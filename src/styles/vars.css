@@ -128,7 +128,7 @@
   /* --------------------- */
   --input-background: var(--white);
   --placeholder: var(--color-dark);
-  --form-border: 1px solid #cdcdcd;
+  --form-border: 1px solid rgb(139, 132, 87);
   --form-border-hover: 1px solid #b9b9b9;
 
   /* --------------------- */

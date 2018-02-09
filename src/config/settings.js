@@ -8,4 +8,14 @@ module.exports = {
     selectedMarkerSize: 32,
     secondaryMarkerSize: 18,
   },
+  bounds: {
+    sw: {
+      lat: 26.106305,
+      lng: -80.167083,
+    },
+    ne: {
+      lat: 26.167778,
+      lng: -80.098372,
+    },
+  },
 }

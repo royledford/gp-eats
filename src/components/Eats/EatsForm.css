@@ -12,6 +12,15 @@ input.eatsform--input {
   padding: 8px 12px;
 }
 
+textarea.eatsform--input {
+  line-height: 1.2rem;
+}
+
+textarea.eatsform--input:disabled {
+  color: var(--color-light);
+  background-color: rgb(145, 131, 61);
+}
+
 .eatsform--search-wrap {
   font-family: var(--font-stack);
   height: 81px;

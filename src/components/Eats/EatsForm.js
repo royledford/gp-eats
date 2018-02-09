@@ -4,8 +4,8 @@ import { Link, Redirect } from 'react-router-dom'
 import Search from '../Maps/Search'
 
 import Dropdown from '../common/Dropdown'
-import Geocode from '../../services/Geocode'
 import DataService from '../../services/DataService'
+import Settings from '../../config/settings'
 import './EatsForm.css'
 
 export default class EatsForm extends Component {
@@ -29,8 +29,8 @@ export default class EatsForm extends Component {
       nameError: '',
       submitLabel: 'Where to Eat?',
       backToList: false,
-      checkingAddress: true,
       addNew: true,
+      formattedEatInfo: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,8 +52,22 @@ export default class EatsForm extends Component {
           servesBeer: eat.servesBeer,
           category: eat.category,
           addNew: false,
-          checkingAddress: false,
+          formattedEatInfo: this.formatEatInfo(
+            eat.name,
+            eat.address,
+            eat.website,
+            eat.phone
+          ),
         })
+      })
+
+      this.setState({
+        bounds: {
+          east: Settings.bounds.ne.lng,
+          north: Settings.bounds.ne.lat,
+          south: Settings.bounds.sw.lng,
+          west: Settings.bounds.sw.lat,
+        },
       })
     }
   }
@@ -67,10 +81,6 @@ export default class EatsForm extends Component {
 
   handleCategoryChange(data) {
     this.setState({ category: data.value })
-  }
-
-  handleAddressFocus = e => {
-    this.setState({ checkingAddress: true })
   }
 
   handleDelete = () => {
@@ -87,14 +97,34 @@ export default class EatsForm extends Component {
   }
 
   handleAddressChanged(places) {
-    this.setState({
-      name: places[0].name,
-      address: places[0].formatted_address,
-      lat: places[0].geometry.location.lat(),
-      lng: places[0].geometry.location.lat(),
-      website: places[0].website,
-      phone: places[0].formatted_phone_number,
-    })
+    debugger
+    if (places) {
+      const info = this.formatEatInfo(
+        places[0].name,
+        places[0].formatted_address,
+        places[0].website,
+        places[0].formatted_phone_number
+      )
+      this.setState({
+        name: places[0].name,
+        address: places[0].formatted_address,
+        lat: places[0].geometry.location.lat(),
+        lng: places[0].geometry.location.lng(),
+        website: places[0].website || '',
+        phone: places[0].formatted_phone_number || '',
+        formattedEatInfo: info,
+      })
+    } else {
+      this.setState({
+        name: '',
+        address: '',
+        lat: '',
+        lng: '',
+        website: '',
+        phone: '',
+        formattedEatInfo: 'Address not found',
+      })
+    }
   }
 
   toggleBeer = e => {
@@ -102,51 +132,18 @@ export default class EatsForm extends Component {
   }
 
   validInput() {
-    let status = true
-    if (this.state.name === '') {
-      this.setState({ nameError: 'Please add a name :)' })
-      status = false
-    }
-    if (this.state.address === '') {
-      this.setState({ addressError: 'Please add an address :)' })
-      status = false
-    }
-
-    return status
+    return true
   }
 
-  getLatLng = () => {
-    const prevLabel = this.state.submitLabel
-    this.setState({ checkingAddress: true, submitLabel: 'Searching...' })
-    var address = this.state.address
-
-    Geocode.getGeocodeFromAddress(address)
-      .then(location => {
-        this.setState({
-          lat: location.results[0].geometry.location.lat,
-          lng: location.results[0].geometry.location.lng,
-          address: location.results[0].formatted_address,
-          addressError: '',
-          checkingAddress: false,
-          submitLabel: prevLabel,
-        })
-      })
-      .catch(error => {
-        console.log(error)
-        this.setState({
-          // just set something so we don't crash
-          lat: 0,
-          lng: 0,
-          addressError: 'Address not found',
-          checkingAddress: false,
-          submitLabel: prevLabel,
-        })
-      })
+  formatEatInfo(name, address, website, phone) {
+    const web = website ? website : ''
+    const tel = phone ? phone : ''
+    return `${name}\n${address}\n${web}\n${tel}
+    `
   }
 
   handleSubmit(e) {
     e.preventDefault()
-
     if (this.validInput()) {
       const eat = {
         name: this.state.name,
@@ -180,24 +177,18 @@ export default class EatsForm extends Component {
       { value: 'restaurant', label: 'restaurant' },
       { value: 'market', label: 'market' },
     ]
+
     const {
-      name,
-      address,
-      website,
-      phone,
       servesBeer,
       category,
-      addressError,
-      nameError,
-      checkingAddress,
       submitLabel,
       addNew,
+      formattedEatInfo,
+      bounds,
     } = this.state
 
     const enableSubmit =
-      this.state.name === '' || this.state.address === ''
-        ? false
-        : checkingAddress ? false : true
+      this.state.name === '' || this.state.address === '' ? false : true
 
     const buttonLabel = enableSubmit ? 'Yeah, add it!' : submitLabel
 
@@ -219,69 +210,24 @@ export default class EatsForm extends Component {
           <label htmlFor="address" className="eatsform--label">
             Search
           </label>
-          <Search onAddressChanged={this.handleAddressChanged} />
+          <Search
+            onAddressChanged={this.handleAddressChanged}
+            bounds={bounds}
+          />
         </div>
 
         <form onSubmit={this.handleSubmit} className="eatsform--form">
           <div className="eatsform--input-wrap">
             <label htmlFor="name" className="eatsform--label">
-              Name
+              Info
             </label>
-            {nameError && (
-              <span className="eatsform--input--error">{nameError}</span>
-            )}
-            <input
-              type="text"
-              name="name"
-              value={name}
-              className="eatsform--input"
-              onChange={this.handleChange}
-            />
-          </div>
 
-          <div className="eatsform--input-wrap">
-            <label htmlFor="address" className="eatsform--label">
-              Address
-            </label>
-            {addressError && (
-              <span className="eatsform--input--error">{addressError}</span>
-            )}
-            <input
-              type="text"
-              name="address"
-              value={address}
+            <textarea
+              rows={6}
+              name="info"
+              value={formattedEatInfo}
               className="eatsform--input"
-              onChange={this.handleChange}
-              onBlur={this.getLatLng}
-              onFocus={this.handleAddressFocus}
-            />
-          </div>
-
-          {/* <SearchBar /> */}
-
-          <div className="eatsform--input-wrap">
-            <label htmlFor="website" className="eatsform--label">
-              Website
-            </label>
-            <input
-              type="text"
-              name="website"
-              value={website}
-              className="eatsform--input"
-              onChange={this.handleChange}
-            />
-          </div>
-
-          <div className="eatsform--input-wrap">
-            <label htmlFor="phone" className="eatsform--label">
-              Phone
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              value={phone}
-              className="eatsform--input"
-              onChange={this.handleChange}
+              disabled={true}
             />
           </div>
 

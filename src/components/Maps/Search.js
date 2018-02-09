@@ -18,18 +18,12 @@ const Search = compose(
       const refs = {}
 
       this.setState({
-        // places: [],
         onSearchBoxMounted: ref => {
           refs.searchBox = ref
         },
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces()
-          // console.log(places)
-
           this.props.onAddressChanged(places)
-          // this.setState({
-          //   places,
-          // })
         },
       })
     },
@@ -50,17 +44,6 @@ const Search = compose(
         }}
       />
     </StandaloneSearchBox>
-    {/* <ol>
-      {props.places.map(
-        ({ place_id, formatted_address, geometry: { location } }) => (
-          <li key={place_id}>
-            {formatted_address}
-            {' at '}
-            ({location.lat()}, {location.lng()})
-          </li>
-        )
-      )}
-    </ol> */}
   </div>
 ))
 
