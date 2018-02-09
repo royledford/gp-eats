@@ -7,3 +7,16 @@
   top: 70px;
   width: 100%;
 }
+
+@media screen and (min-width: 600px) {
+  .admin--header {
+    width: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .admin--content {
+    width: 400px;
+    margin: 0 auto;
+  }
+}
