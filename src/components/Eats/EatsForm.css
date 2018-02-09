@@ -8,6 +8,15 @@
   font-family: var(--font-stack);
 }
 
+input.eatsform--input {
+  padding: 8px 12px;
+}
+
+.eatsform--search-wrap {
+  font-family: var(--font-stack);
+  height: 81px;
+}
+
 .eatsform--label {
   display: inline-block;
   margin-left: 4px;
@@ -41,16 +50,19 @@
   justify-content: flex-end;
   align-items: center;
   padding: 6px 0 0 0;
+  height: 66px;
 }
 
-.eatsform--footer-controls {
+.eatsform--delete-control {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
+  height: 21px;
 }
 
 .eatsform--button-secondary {
   margin: 0;
+  height: 12px;
   background-color: transparent;
   border: none;
   color: var(--brandcolor);

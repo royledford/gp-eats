@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link, Redirect } from 'react-router-dom'
+import Search from '../Maps/Search'
+
 import Dropdown from '../common/Dropdown'
 import Geocode from '../../services/Geocode'
 import DataService from '../../services/DataService'
@@ -33,6 +35,7 @@ export default class EatsForm extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
+    this.handleAddressChanged = this.handleAddressChanged.bind(this)
   }
 
   componentDidMount() {
@@ -81,6 +84,17 @@ export default class EatsForm extends Component {
       .catch(() => {
         console.log(`Eat: ${this.state.id} could not be deleted.`)
       })
+  }
+
+  handleAddressChanged(places) {
+    this.setState({
+      name: places[0].name,
+      address: places[0].formatted_address,
+      lat: places[0].geometry.location.lat(),
+      lng: places[0].geometry.location.lat(),
+      website: places[0].website,
+      phone: places[0].formatted_phone_number,
+    })
   }
 
   toggleBeer = e => {
@@ -191,16 +205,24 @@ export default class EatsForm extends Component {
 
     return (
       <div className="eatsform--wrap">
-        <form onSubmit={this.handleSubmit} className="eatsform--form">
-          <div className="eatsform--controls">
-            <Link to="/eats" className="eatsform--button-link">
-              Nope, take me back
-            </Link>
-            <button className="eatsform--button" disabled={!enableSubmit}>
-              {buttonLabel}
+        <div className="eatsform--delete-control">
+          {!addNew && (
+            <button
+              className="eatsform--button-secondary"
+              onClick={this.handleDelete}>
+              Delete this place
             </button>
-          </div>
+          )}
+        </div>
 
+        <div className="eatsform--search-wrap">
+          <label htmlFor="address" className="eatsform--label">
+            Search
+          </label>
+          <Search onAddressChanged={this.handleAddressChanged} />
+        </div>
+
+        <form onSubmit={this.handleSubmit} className="eatsform--form">
           <div className="eatsform--input-wrap">
             <label htmlFor="name" className="eatsform--label">
               Name
@@ -234,6 +256,8 @@ export default class EatsForm extends Component {
               onFocus={this.handleAddressFocus}
             />
           </div>
+
+          {/* <SearchBar /> */}
 
           <div className="eatsform--input-wrap">
             <label htmlFor="website" className="eatsform--label">
@@ -279,15 +303,14 @@ export default class EatsForm extends Component {
             onChange={this.handleCategoryChange}
           />
 
-          {!addNew && (
-            <div className="eatsform--footer-controls">
-              <button
-                className="eatsform--button-secondary"
-                onClick={this.handleDelete}>
-                Delete this place
-              </button>
-            </div>
-          )}
+          <div className="eatsform--controls">
+            <Link to="/eats" className="eatsform--button-link">
+              Nope, take me back
+            </Link>
+            <button className="eatsform--button" disabled={!enableSubmit}>
+              {buttonLabel}
+            </button>
+          </div>
         </form>
       </div>
     )
