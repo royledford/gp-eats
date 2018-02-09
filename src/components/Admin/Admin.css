@@ -8,6 +8,7 @@
   width: 100%;
 }
 
+/* Tablet and up */
 @media screen and (min-width: 600px) {
   .admin--header {
     width: 400px;

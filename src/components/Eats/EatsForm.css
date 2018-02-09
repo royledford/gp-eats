@@ -129,3 +129,11 @@
 .eatsform--select {
   background-color: var(--color-dark);
 }
+
+/* Tablet and up */
+@media screen and (min-width: 600px) {
+  .eatsform--wrap {
+    width: 600px;
+    margin: 0 auto;
+  }
+}

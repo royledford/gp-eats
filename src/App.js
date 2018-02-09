@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Router basename={process.env.PUBLIC_URL}>
-          <div>
+          <React.Fragment>
             <Header />
             <Switch>
               <Route exact path="/" component={MainContainer} />
@@ -20,7 +20,7 @@ class App extends Component {
               <Route exact path="/eats/new" component={EatsForm} />
               <Route exact path="/eats/:id" component={EatsForm} />
             </Switch>
-          </div>
+          </React.Fragment>
         </Router>
       </React.Fragment>
     )
