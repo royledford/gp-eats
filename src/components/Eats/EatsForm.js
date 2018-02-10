@@ -63,10 +63,10 @@ export default class EatsForm extends Component {
 
       this.setState({
         bounds: {
-          east: Settings.bounds.ne.lng,
-          north: Settings.bounds.ne.lat,
-          south: Settings.bounds.sw.lng,
-          west: Settings.bounds.sw.lat,
+          east: Settings.bounds.ne.lat,
+          north: Settings.bounds.ne.lng,
+          south: Settings.bounds.sw.lat,
+          west: Settings.bounds.sw.lng,
         },
       })
     }
@@ -97,7 +97,6 @@ export default class EatsForm extends Component {
   }
 
   handleAddressChanged(places) {
-    debugger
     if (places) {
       const info = this.formatEatInfo(
         places[0].name,
@@ -206,16 +205,6 @@ export default class EatsForm extends Component {
           )}
         </div>
 
-        <div className="eatsform--search-wrap">
-          <label htmlFor="address" className="eatsform--label">
-            Search
-          </label>
-          <Search
-            onAddressChanged={this.handleAddressChanged}
-            bounds={bounds}
-          />
-        </div>
-
         <form onSubmit={this.handleSubmit} className="eatsform--form">
           <div className="eatsform--input-wrap">
             <label htmlFor="name" className="eatsform--label">
@@ -228,6 +217,16 @@ export default class EatsForm extends Component {
               value={formattedEatInfo}
               className="eatsform--input"
               disabled={true}
+            />
+          </div>
+
+          <div className="eatsform--search-wrap">
+            <label htmlFor="address" className="eatsform--label">
+              Search
+            </label>
+            <Search
+              onAddressChanged={this.handleAddressChanged}
+              bounds={bounds}
             />
           </div>
 
