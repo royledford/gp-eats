@@ -1,5 +1,6 @@
 .app--loader {
   position: fixed;
+  z-index: -1;
   top: calc(50vh - 150px);
   left: calc(50vw - 150px);
   width: 300px;
