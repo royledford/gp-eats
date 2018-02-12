@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 import DataService from '../services/DataService'
 import Main from './Main'
-import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 import Settings from '../config/settings'
 import './MainContainer.css'
 

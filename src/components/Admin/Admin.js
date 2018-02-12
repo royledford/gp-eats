@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Redirect } from 'react-router-dom'
 // import { auth } from '../../config/firebase'
 
 import CardLogin from '../common/CardLogin'
@@ -20,7 +19,7 @@ export default class Admin extends Component {
   }
 
   render() {
-    const { eats, eatId, editEat, addNewEat } = this.props
+    const { eats, editEat, addNewEat } = this.props
 
     return (
       <div className="admin--wrap">

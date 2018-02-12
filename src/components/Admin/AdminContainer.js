@@ -53,7 +53,7 @@ export default class AdminContainer extends Component {
   }
 
   render() {
-    const { eats, user, eatId, editEat, addNewEat } = this.state
+    const { eats, eatId, editEat, addNewEat } = this.state
 
     if (editEat) return <Redirect to={`/eats/${eatId}`} />
 

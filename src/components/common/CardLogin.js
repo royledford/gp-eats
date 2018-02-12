@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { auth, provider } from '../../config/firebase'
+import { auth } from '../../config/firebase'
 import Card from './Card'
 import TiPlus from 'react-icons/lib/ti/plus'
 import { login, logout } from '../../services/AuthService'
