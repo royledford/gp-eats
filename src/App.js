@@ -18,7 +18,6 @@ class App extends Component {
         <Router basename={process.env.PUBLIC_URL}>
           <React.Fragment>
             <Header />
-            <LogoAnimated containerClass="app--loader" />
             <Switch>
               <Route exact path="/" component={MainContainer} />
               <Route exact path="/eats" component={AdminContainer} />
@@ -26,6 +25,7 @@ class App extends Component {
               <PrivateRoute exact path="/eats/:id" component={EatsForm} />
               <Route component={NotFound} />
             </Switch>
+            <LogoAnimated containerClass="app--loader" />
           </React.Fragment>
         </Router>
       </React.Fragment>

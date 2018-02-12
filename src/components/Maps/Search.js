@@ -2,14 +2,16 @@ import React from 'react'
 import { compose, withProps, lifecycle } from 'recompose'
 import { withScriptjs } from 'react-google-maps'
 import { StandaloneSearchBox } from 'react-google-maps/lib/components/places/StandaloneSearchBox'
+// import Keys from '../../services/KeyService'
 import config from '../../config/config'
 
-const key =
-  process.env.REACT_APP_GOOGLE_PLACES_API_KEY || config.googlePlacesApiKey
+const key = process.env.REACT_APP_GOOGLE_PLACES_API_KEY
 
 const Search = compose(
   withProps({
-    googleMapURL: `${config.googleMapApi}key=${key}&v=3.exp&libraries=places`,
+    googleMapURL: `${
+      config.googleMapApiUrl
+    }key=${key}&v=3.exp&libraries=places`,
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
   }),

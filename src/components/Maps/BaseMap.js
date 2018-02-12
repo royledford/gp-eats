@@ -16,12 +16,12 @@ import settings from '../../config/settings'
 import gpLogo from '../../img/map-gplogo.png'
 
 // const google = window.google
-const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || config.googleMapApiKey
+const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 
 const BaseMap = compose(
   withProps({
     googleMapURL: `${
-      config.googleMapApi
+      config.googleMapApiUrl
     }key=${key}&v=3.exp&libraries=geometry,drawing,places`,
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div className="main--map-container" />,

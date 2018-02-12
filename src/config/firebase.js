@@ -1,7 +1,9 @@
 import firebase from 'firebase'
+console.log(process.env.REACT_APP_FIRE_BASE_API)
+console.log(process.env)
 
 const config = {
-  apiKey: 'AIzaSyDK-3szJBUQsL7un4aSvWKmf4-yr8tCAxE',
+  apiKey: process.env.REACT_APP_FIRE_BASE_API,
   authDomain: 'gp-eats-1517591141865.firebaseapp.com',
   databaseURL: 'https://gp-eats-1517591141865.firebaseio.com',
   projectId: 'gp-eats-1517591141865',
