@@ -5,7 +5,11 @@ const Geocode = {
   getGeocodeFromAddress: function(address) {
     var encodedAddress = encodeURIComponent(address)
     return axios
-      .get(`${config.geocodeApi}address=${encodedAddress}&key=${config.geocodeApiKey}`)
+      .get(
+        `${config.geocodeApi}address=${encodedAddress}&key=${
+          config.geocodeApiKey
+        }`
+      )
       .then(function(response) {
         return response.data
         // if ((response.data.status = 'OK')) {

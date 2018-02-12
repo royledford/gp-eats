@@ -47,8 +47,8 @@ export default class MainContainer extends Component {
     this.setState({
       directions: {
         from: {
-          lat: Settings.lat,
-          lng: Settings.lng,
+          lat: Settings.homeLat,
+          lng: Settings.homeLng,
         },
         to: {
           lat: eat.lat,
@@ -100,7 +100,7 @@ export default class MainContainer extends Component {
       selectedEat: '',
       directions: null,
       mapTooltip: null,
-      mapCenter: { lat: Settings.lat, lng: Settings.lng },
+      mapCenter: { lat: Settings.homeLat, lng: Settings.homeLng },
       zoomLevel: Settings.zoomLevel,
     })
   }
