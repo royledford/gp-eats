@@ -1,9 +1,9 @@
-.one {
+.logoanimated--building {
   animation: logoAni 3s infinite;
   transform-origin: bottom;
 }
 
-.bolt {
+.logoanimated--bolt {
   transform-origin: bottom;
   transform: translateY(66px) translateX(18px) scale(0.75);
 

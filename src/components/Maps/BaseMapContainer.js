@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import BaseMap from './BaseMap'
-import Geocode from '../../services/Geocode'
 import settings from '../../config/settings'
 import gpLogo from '../../img/map-gplogo.png'
 import eatMarker from '../../img/map-eat.png'
@@ -30,14 +29,12 @@ export default class BaseMapContainer extends Component {
     homeMarkerClicked: PropTypes.func.isRequired,
     zoomLevel: PropTypes.number,
     markerHover: PropTypes.func.isRequired,
-    // mapHeight: PropTypes.number,
   }
   static defaultProps = {
     markerClicked: () => {},
     directions: null,
     selectedMarkerId: '',
     zoomLevel: 14,
-    // mapHeight: 300,
   }
 
   constructor(props) {
@@ -51,27 +48,13 @@ export default class BaseMapContainer extends Component {
   }
 
   componentDidMount() {
-    // Get the home location from settings.
-    var address = settings.homeAddress
-    Geocode.getGeocodeFromAddress(address)
-      .then(location => {
-        this.setState({
-          homeGeocode: {
-            lat: location.results[0].geometry.location.lat,
-            lng: location.results[0].geometry.location.lng,
-          },
-        })
-      })
-      .catch(error => {
-        console.log(error)
-        this.setState({
-          homeGeocode: {
-            // just set something so we don't crash
-            lat: 26,
-            lng: -80,
-          },
-        })
-      })
+    const homeGeocode = {
+      homeGeocode: {
+        lat: settings.homeLat,
+        lng: settings.homeLng,
+      },
+    }
+    this.setState(homeGeocode)
   }
 
   render() {
@@ -87,8 +70,8 @@ export default class BaseMapContainer extends Component {
       zoomLevel,
       markerHover,
     } = this.props
+
     const center = mapCenter ? mapCenter : homeGeocode
-    // const zoomLevel = mapCenter ? 16 : settings.zoomLevel
 
     return (
       <div>
@@ -105,7 +88,6 @@ export default class BaseMapContainer extends Component {
           selectedMarkerId={selectedCardId}
           homeMarkerClicked={homeMarkerClicked}
           markerHover={markerHover}
-          // mapHeight={mapHeight}
         />
       </div>
     )

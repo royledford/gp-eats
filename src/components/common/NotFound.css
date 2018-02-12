@@ -1,0 +1,28 @@
+.notfound--wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+  padding: 90px 20px 0 20px;
+  text-align: center;
+  color: var(--brandcolor);
+}
+
+.notfound--title {
+  font-size: 40px;
+}
+
+.notfound--title-small {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+@media screen and (min-width: 600px) {
+  .notfound--title {
+    font-size: 80px;
+  }
+
+  .notfound--title-small {
+    font-size: 16px;
+  }
+}

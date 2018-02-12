@@ -6,6 +6,7 @@ import MainContainer from './components/MainContainer'
 import AdminContainer from './components/Admin/AdminContainer'
 import EatsForm from './components/Eats/EatsForm'
 import Header from './components/Header'
+import NotFound from './components/common/NotFound'
 import './App.css'
 
 import LogoAnimated from './components/common/LogoAnimated'
@@ -17,12 +18,13 @@ class App extends Component {
         <Router basename={process.env.PUBLIC_URL}>
           <React.Fragment>
             <Header />
+            <LogoAnimated containerClass="app--loader" />
             <Switch>
               <Route exact path="/" component={MainContainer} />
               <Route exact path="/eats" component={AdminContainer} />
               <PrivateRoute exact path="/eats/new" component={EatsForm} />
               <PrivateRoute exact path="/eats/:id" component={EatsForm} />
-              <Route exact path="/play" component={LogoAnimated} />
+              <Route component={NotFound} />
             </Switch>
           </React.Fragment>
         </Router>
