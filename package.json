@@ -2,9 +2,11 @@
   "name": "gp-eats",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://myusername.github.io/gp-eats",
   "dependencies": {
     "axios": "^0.17.1",
     "classnames": "^2.2.5",
+    "gh-pages": "^1.1.0",
     "lodash": "^4.17.5",
     "parse-address": "^0.0.10",
     "react": "^16.2.0",
@@ -20,6 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
