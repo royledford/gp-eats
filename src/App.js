@@ -20,7 +20,11 @@ class App extends Component {
             <Header />
             <Switch>
               <Route exact path="/" component={MainContainer} />
-              <Route exact path="/eats" component={AdminContainer} />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + '/eats'}
+                component={AdminContainer}
+              />
               <PrivateRoute exact path="/eats/new" component={EatsForm} />
               <PrivateRoute exact path="/eats/:id" component={EatsForm} />
               <Route component={NotFound} />
