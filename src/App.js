@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+import PrivateRoute from './PrivateRoute'
 import MainContainer from './components/MainContainer'
 import AdminContainer from './components/Admin/AdminContainer'
 import EatsForm from './components/Eats/EatsForm'
@@ -19,8 +20,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={MainContainer} />
               <Route exact path="/eats" component={AdminContainer} />
-              <Route exact path="/eats/new" component={EatsForm} />
-              <Route exact path="/eats/:id" component={EatsForm} />
+              <PrivateRoute exact path="/eats/new" component={EatsForm} />
+              <PrivateRoute exact path="/eats/:id" component={EatsForm} />
               <Route exact path="/play" component={LogoAnimated} />
             </Switch>
           </React.Fragment>

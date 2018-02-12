@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { auth, provider } from '../../config/firebase'
 import Card from './Card'
 import TiPlus from 'react-icons/lib/ti/plus'
+import { login, logout } from '../../services/AuthService'
 
 import './CardLogin.css'
 
@@ -19,8 +20,8 @@ export default class CardLogin extends Component {
     this.state = {
       user: null,
     }
-    this.login = this.login.bind(this)
-    this.logout = this.logout.bind(this)
+    this.loginUser = this.loginUser.bind(this)
+    this.logoutUser = this.logoutUser.bind(this)
   }
 
   componentDidMount() {
@@ -31,23 +32,24 @@ export default class CardLogin extends Component {
     })
   }
 
-  authCb() {}
-
-  logout() {
-    auth.signOut().then(() => {
-      this.setState({
-        user: null,
+  logoutUser() {
+    logout()
+      .then(() => {
+        this.setState({
+          user: null,
+        })
       })
-    })
+      .catch(e => console.log('Login:', e))
   }
 
-  login() {
-    auth.signInWithPopup(provider).then(result => {
-      const user = result.user
-      this.setState({
-        user,
+  loginUser() {
+    login()
+      .then(user => {
+        this.setState({
+          user,
+        })
       })
-    })
+      .catch(e => console.log('Login:', e))
   }
 
   render() {
@@ -55,11 +57,11 @@ export default class CardLogin extends Component {
 
     // Login button
     const login = this.state.user ? (
-      <button onClick={this.logout} className="cardlogin--button">
+      <button onClick={this.logoutUser} className="cardlogin--button">
         Log out
       </button>
     ) : (
-      <button onClick={this.login} className="cardlogin--button">
+      <button onClick={this.loginUser} className="cardlogin--button">
         Log in
       </button>
     )

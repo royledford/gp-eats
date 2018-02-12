@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { auth } from '../../config/firebase'
 import { Redirect } from 'react-router-dom'
 import { ToastContainer, toast, style } from 'react-toastify'
+import { isLoggedIn } from '../../services/AuthService'
 
 import Header from '../Header'
 import Admin from './Admin'
@@ -39,7 +40,8 @@ export default class AdminContainer extends Component {
   }
 
   handleCardClicked = eatId => {
-    if (auth.currentUser) {
+    // if (auth.currentUser) {
+    if (isLoggedIn()) {
       this.setState({ eatId, editEat: true })
     } else {
       toast.info('Please login to edit locations.')
