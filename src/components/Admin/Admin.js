@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
-import { auth } from '../../config/firebase'
+// import { auth } from '../../config/firebase'
 
 import CardLogin from '../common/CardLogin'
 import EatsList from '../EatsList/EatsList'
@@ -10,52 +10,25 @@ import './Admin.css'
 export default class Admin extends Component {
   static propTypes = {
     eats: PropTypes.array.isRequired,
+    editEat: PropTypes.func.isRequired,
+    addNewEat: PropTypes.func.isRequired,
+    eatId: PropTypes.string,
   }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      eatId: '',
-      goToAddNew: false,
-      goToEdit: false,
-      user: null,
-    }
-    this.handleAddNew = this.handleAddNew.bind(this)
-  }
-
-  componentDidMount() {
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ user })
-      }
-    })
-  }
-
-  handleAddNew() {
-    this.setState({ goToAddNew: true })
-  }
-
-  handleCardClicked = eatId => {
-    if (this.state.user) {
-      this.setState({ eatId, goToEdit: true })
-    }
+  static defaultProps = {
+    user: null,
+    eatId: '',
   }
 
   render() {
-    const { eats } = this.props
-    const { goToAddNew, goToEdit, eatId } = this.state
-
-    if (goToAddNew) return <Redirect to="/eats/new" />
-
-    if (goToEdit) return <Redirect to={`/eats/${eatId}`} />
+    const { eats, eatId, editEat, addNewEat } = this.props
 
     return (
       <div className="admin--wrap">
         <div className="admin--header">
-          <CardLogin onAddNew={this.handleAddNew} />
+          <CardLogin onAddNew={addNewEat} />
         </div>
         <div className="admin--content">
-          <EatsList eats={eats} cardClicked={this.handleCardClicked} />
+          <EatsList eats={eats} cardClicked={editEat} />
         </div>
       </div>
     )
