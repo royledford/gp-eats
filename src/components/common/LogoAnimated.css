@@ -5,10 +5,10 @@
 
 .bolt {
   transform-origin: bottom;
-  /* transform: translateY(56px) translateX(10px) scale(0.5); */
-  /* fill: white; */
+  transform: translateY(66px) translateX(18px) scale(0.75);
+
   animation: boltAni 3s infinite;
-  animation-delay: 2.4s;
+  animation-delay: 2.2s;
 }
 
 @keyframes logoAni {
@@ -33,9 +33,13 @@
   }
   45% {
     transform: scaleY(0.8);
+    opacity: 1;
   }
   65% {
     transform: scaleY(0.8);
+  }
+  70% {
+    opacity: 0;
   }
   95% {
     transform: scaleY(0.8);
