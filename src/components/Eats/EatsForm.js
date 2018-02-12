@@ -86,7 +86,6 @@ export default class EatsForm extends Component {
   handleDelete = () => {
     DataService.deleteEat(this.state.id)
       .then(() => {
-        console.log('then')
         this.setState({
           backToList: true,
         })

@@ -22,7 +22,7 @@ const BaseMap = compose(
   withProps({
     googleMapURL: `${
       config.googleMapApiUrl
-    }key=${key}&v=3.exp&libraries=geometry,drawing,places`,
+    }key=${key}&v=3.exp&libraries=geometry,drawing`,
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div className="main--map-container" />,
     mapElement: <div style={{ height: `100%` }} />,
