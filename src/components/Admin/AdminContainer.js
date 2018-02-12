@@ -24,7 +24,14 @@ export default class AdminContainer extends Component {
 
   componentDidMount() {
     DataService.getEats().then(eats => {
-      this.setState({ eats: eats })
+      const sortedEats = eats.sort((a, b) => {
+        if (a.name > b.name) {
+          return 1
+        } else {
+          return -1
+        }
+      })
+      this.setState({ eats: sortedEats })
     })
 
     auth.onAuthStateChanged(user => {
