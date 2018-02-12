@@ -83,11 +83,10 @@ const BaseMap = compose(
     />
     {props.eatLocations.map(location => {
       let markerSize = settings.markerSize.defaultMarkerSize
-      if (props.directions) {
-        markerSize = settings.markerSize.secondaryMarkerSize
-        if (props.selectedMarkerId === location.id) {
-          markerSize = settings.markerSize.selectedMarkerSize
-        }
+      markerSize = settings.markerSize.secondaryMarkerSize
+
+      if (props.selectedMarkerId === location.id) {
+        markerSize = settings.markerSize.selectedMarkerSize
       }
 
       let markerIcon = {
