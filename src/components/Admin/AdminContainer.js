@@ -34,11 +34,11 @@ export default class AdminContainer extends Component {
       this.setState({ eats: sortedEats })
     })
 
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ user })
-      }
-    })
+    // auth.onAuthStateChanged(user => {
+    //   if (user) {
+    //     this.setState({ user })
+    //   }
+    // })
 
     // overide the toast styles
     style({
@@ -47,12 +47,11 @@ export default class AdminContainer extends Component {
   }
 
   handleCardClicked = eatId => {
-    // if (auth.currentUser) {
-    if (isLoggedIn()) {
-      this.setState({ eatId, editEat: true })
-    } else {
-      toast.info('Please login to edit locations.')
-    }
+    // if (isLoggedIn()) {
+    this.setState({ eatId, editEat: true })
+    // } else {
+    //   toast.info('Please login to edit locations.')
+    // }
   }
 
   handleAddNew() {

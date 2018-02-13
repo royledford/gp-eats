@@ -14,7 +14,7 @@ export default class Header extends Component {
           GP Local Eats
         </Link>
         <Link to="/eats" className="header--admin-link">
-          Add
+          Edit
         </Link>
       </header>
     )
