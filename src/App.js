@@ -12,10 +12,6 @@ import './App.css'
 import LogoAnimated from './components/common/LogoAnimated'
 
 class App extends Component {
-  componentDidMount() {
-    console.log('url: ', process.env.PUBLIC_URL)
-  }
-
   render() {
     return (
       <React.Fragment>
