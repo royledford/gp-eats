@@ -13,8 +13,8 @@ export default class Header extends Component {
         <Link to="/" className="header--title">
           GP Local Eats
         </Link>
-        <Link to="/eats" className="header--title">
-          test
+        <Link to="/eats" className="header--admin-link">
+          Add
         </Link>
       </header>
     )

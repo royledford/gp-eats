@@ -1,4 +1,6 @@
 .header--wrap {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   width: 100%;
   z-index: 4;
@@ -28,4 +30,20 @@
 .header--logo {
   position: absolute;
   left: 20px;
+}
+
+.header--admin-link {
+  font-family: var(--font-stack);
+  padding: 0;
+  margin-right: 20px;
+  line-height: 70px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: var(--accent-color);
+  background-color: transparent;
+}
+
+.header--admin-link:hover {
+  color: var(--accent-color);
 }
