@@ -22,6 +22,7 @@ export default class EatsForm extends Component {
       website: '',
       phone: '',
       servesBeer: false,
+      delivers: false,
       category: 'restaurant',
       lat: 0,
       lng: 0,
@@ -50,6 +51,7 @@ export default class EatsForm extends Component {
           website: eat.website,
           phone: eat.phone,
           servesBeer: eat.servesBeer,
+          delivers: eat.delivers || false,
           category: eat.category,
           addNew: false,
           formattedEatInfo: this.formatEatInfo(
@@ -129,6 +131,10 @@ export default class EatsForm extends Component {
     this.setState({ servesBeer: !this.state.servesBeer })
   }
 
+  toggleDelivery = e => {
+    this.setState({ delivers: !this.state.delivers })
+  }
+
   validInput() {
     return true
   }
@@ -149,6 +155,7 @@ export default class EatsForm extends Component {
         website: this.state.website,
         phone: this.state.phone,
         servesBeer: this.state.servesBeer,
+        delivers: this.state.delivers,
         category: this.state.category,
         lat: this.state.lat,
         lng: this.state.lng,
@@ -178,6 +185,7 @@ export default class EatsForm extends Component {
 
     const {
       servesBeer,
+      delivers,
       category,
       submitLabel,
       addNew,
@@ -235,6 +243,16 @@ export default class EatsForm extends Component {
               type="checkbox"
               onChange={this.toggleBeer}
               checked={servesBeer}
+            />
+            <span className="eatsform--checkmark" />
+          </label>
+
+          <label className="eatsform--checkbox-container">
+            <span className="eatsform--checkbox-label">Delivers</span>
+            <input
+              type="checkbox"
+              onChange={this.toggleDelivery}
+              checked={delivers}
             />
             <span className="eatsform--checkmark" />
           </label>

@@ -6,6 +6,7 @@ import TiBeer from 'react-icons/lib/ti/beer'
 import GoLinkExternal from 'react-icons/lib/go/link-external'
 import KnifeForkIcon from '../common/KnifeForkIcon'
 import MarketIcon from '../common/MarketIcon'
+import CarIcon from '../common/CarIcon'
 import './EatsCard.css'
 
 export default class EatsCard extends Component {
@@ -20,8 +21,10 @@ export default class EatsCard extends Component {
       address: PropTypes.string,
       phone: PropTypes.string,
       website: PropTypes.string,
-      scrollToView: PropTypes.bool,
+      servesBeer: PropTypes.bool,
+      delivers: PropTypes.bool,
     }),
+    scrollToView: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
     active: PropTypes.bool,
   }
@@ -48,8 +51,9 @@ export default class EatsCard extends Component {
 
   render() {
     const { eatsData, active } = this.props
-    const beerIcon = eatsData.servesBeer ? <TiBeer /> : null
     const address = getShortAddress(eatsData.address)
+    const beerIcon = eatsData.servesBeer ? <TiBeer /> : null
+    const carIcon = eatsData.delivers ? <CarIcon color="white" /> : null
     const eatType =
       eatsData.category === 'restaurant' ? <KnifeForkIcon /> : <MarketIcon />
     // const activeClass = this.props.active ? 'eatscard--card-active' : ''
@@ -69,6 +73,7 @@ export default class EatsCard extends Component {
           <div className="eatscard--footer">
             {beerIcon}
             {eatType}
+            {carIcon}
             <a
               href={eatsData.website}
               className="eatscard--link"

@@ -25,11 +25,11 @@ export default class CardLogin extends Component {
   }
 
   componentDidMount() {
-    // auth.onAuthStateChanged(user => {
-    //   if (user) {
-    //     this.setState({ user })
-    //   }
-    // })
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user })
+      }
+    })
   }
 
   logoutUser() {
@@ -56,15 +56,15 @@ export default class CardLogin extends Component {
     const { onAddNew } = this.props
 
     // Login button
-    // const login = this.state.user ? (
-    //   <button onClick={this.logoutUser} className="cardlogin--button">
-    //     Log out
-    //   </button>
-    // ) : (
-    //   <button onClick={this.loginUser} className="cardlogin--button">
-    //     Log in
-    //   </button>
-    // )
+    const login = this.state.user ? (
+      <button onClick={this.logoutUser} className="cardlogin--button">
+        Log out
+      </button>
+    ) : (
+      <button onClick={this.loginUser} className="cardlogin--button">
+        Log in
+      </button>
+    )
 
     // Add button
     const addButton = this.state.user ? (
@@ -74,21 +74,18 @@ export default class CardLogin extends Component {
     ) : null
 
     // UserAvatar
-    // const avatar = this.state.user ? (
-    //   <div className="cardlogin--profile">
-    //     <img src={this.state.user.photoURL} alt="User profile" />
-    //   </div>
-    // ) : null
+    const avatar = this.state.user ? (
+      <div className="cardlogin--profile">
+        <img src={this.state.user.photoURL} alt="User profile" />
+      </div>
+    ) : null
 
     return (
       <Card>
         <div className="cardlogin--wrap">
-          {/* {avatar} */}
-          {/* {addButton} */}
-          <div className="cardlogin--add">
-            <TiPlus className="cardlogin--add-icon" onClick={onAddNew} />
-          </div>
-          {/* {login} */}
+          {avatar}
+          {addButton}
+          {login}
         </div>
       </Card>
     )
